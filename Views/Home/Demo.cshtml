@@ -1,0 +1,285 @@
+﻿@{
+    ViewData["Title"] = "demo";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discharge Summary Generator - HealthAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" /></svg></div>
+                <span class="logo-text">Clinical<span>Intelligence</span>AI</span>
+            </a>
+
+        </div>
+    </nav>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p class="loading-text">Generating Discharge Summary...</p>
+    </div>
+
+    <!-- Simplify Modal -->
+    <div class="simplify-modal" id="simplifyModal">
+        <div class="simplify-modal-content">
+            <div class="simplify-modal-header">
+                <h2 class="simplify-modal-title">
+                    <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" /></svg>
+                    Patient-Friendly Summary
+                </h2>
+                <button class="close-modal-btn" onclick="closeSimplifyModal()">
+                    <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" /></svg>
+                </button>
+            </div>
+            <div class="simplify-modal-body">
+                <!-- Improvement Summary -->
+                <div class="improvement-summary">
+                    <div class="improvement-summary-title">
+                        <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" /></svg>
+                        Readability Improvement
+                    </div>
+                    <div class="improvement-metrics">
+                        <div class="improvement-metric">
+                            <div class="improvement-metric-value" id="gradeReduction">--</div>
+                            <div class="improvement-metric-label">Grade Levels Reduced</div>
+                        </div>
+                        <div class="improvement-metric">
+                            <div class="improvement-metric-value" id="easeIncrease">--</div>
+                            <div class="improvement-metric-label">Reading Ease Increase</div>
+                        </div>
+                        <div class="improvement-metric">
+                            <div class="improvement-metric-value" id="originalGrade">--</div>
+                            <div class="improvement-metric-label">Original Grade Level</div>
+                        </div>
+                        <div class="improvement-metric">
+                            <div class="improvement-metric-value" id="simplifiedGrade">--</div>
+                            <div class="improvement-metric-label">Simplified Grade Level</div>
+                        </div>
+                    </div>
+                    <div id="targetBadge"></div>
+                </div>
+
+                <!-- Comparison Grid -->
+                <div class="comparison-grid">
+                    <div class="comparison-column">
+                        <div class="comparison-header">
+                            <div class="comparison-title">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z" /></svg>
+                                Original Summary
+                            </div>
+                            <div class="comparison-grade">
+                                <span>Grade</span>
+                                <div class="comparison-grade-circle" id="originalGradeCircle">--</div>
+                            </div>
+                        </div>
+                        <div class="comparison-body">
+                            <div class="comparison-text" id="originalSummaryText">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="comparison-column">
+                        <div class="comparison-header simplified">
+                            <div class="comparison-title">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
+                                Simplified Summary
+                            </div>
+                            <div class="comparison-grade">
+                                <span>Grade</span>
+                                <div class="comparison-grade-circle" id="simplifiedGradeCircle">--</div>
+                            </div>
+                        </div>
+                        <div class="comparison-body">
+                            <div class="comparison-text" id="simplifiedSummaryText">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="use-simplified-btn" onclick="useSimplifiedSummary()">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
+                    Use Simplified Version
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="page-header">
+            <h1>Discharge Summary Generator</h1>
+            <p>Select a patient to generate a comprehensive discharge summary with guideline-based follow-up recommendations</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Patient Selection Panel -->
+            <div class="patient-panel">
+                <div class="panel-title">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
+                    Select Patient
+                </div>
+
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" /></svg>
+                    <input type="text" id="patientSearch" placeholder="Search patients...">
+                </div>
+
+                <div class="patient-list" id="patientList">
+                    <p style="text-align: center; color: var(--gray-400); padding: 20px;">Loading patients...</p>
+                </div>
+
+                <div class="language-selector">
+                    <label for="languageSelect">Output Language</label>
+                    <select class="language-select" id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="zh">Chinese (Mandarin)</option>
+                        <option value="hi">Hindi</option>
+                        <option value="es">Spanish</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                </div>
+
+                <button class="generate-btn" id="generateBtn" disabled>
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" /></svg>
+                    Generate Discharge Summary
+                </button>
+            </div>
+
+            <!-- Summary Panel -->
+            <div class="summary-panel">
+                <div class="summary-header">
+                    <div style="display: flex; align-items: center;">
+                        <h2 class="summary-title">Discharge Summary</h2>
+                        <span class="translation-badge" id="translationBadge" style="display: none;">
+                            <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" /></svg>
+                            <span id="languageName">English</span>
+                        </span>
+                    </div>
+                    <div class="summary-actions" id="summaryActions" style="display: none;">
+                        <button class="simplify-btn" id="simplifyBtn" onclick="simplifySummary()">
+                            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" /></svg>
+                            Simplify for Patients
+                        </button>
+                        <button class="action-btn" onclick="copyToClipboard()">
+                            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" /></svg>
+                            Copy
+                        </button>
+                        <button class="action-btn" onclick="downloadSummary()">
+                            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" /></svg>
+                            Download
+                        </button>
+                        <button class="action-btn" onclick="printSummary()">
+                            <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" /></svg>
+                            Print
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stats-bar" id="statsBar" style="display: none;">
+                    <div class="stat-item">
+                        <span class="label">Patient Records:</span>
+                        <span class="value" id="recordsCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Guidelines Applied:</span>
+                        <span class="value" id="guidelinesCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Conditions:</span>
+                        <span id="conditionsBadges"></span>
+                    </div>
+                </div>
+
+                <!-- Readability Score Card -->
+                <div class="readability-card" id="readabilityCard">
+                    <div class="readability-header">
+                        <div class="readability-title">
+                            <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z" /></svg>
+                            Flesch-Kincaid Readability Score
+                        </div>
+                        <div class="readability-grade">
+                            <div class="grade-circle" id="gradeCircle">--</div>
+                            <div class="grade-label">
+                                <strong id="difficultyLabel">--</strong>
+                                Grade Level
+                            </div>
+                        </div>
+                    </div>
+                    <div class="readability-details">
+                        <div class="readability-stat">
+                            <div class="readability-stat-value" id="readingEase">--</div>
+                            <div class="readability-stat-label">Reading Ease</div>
+                        </div>
+                        <div class="readability-stat">
+                            <div class="readability-stat-value" id="wordCount">--</div>
+                            <div class="readability-stat-label">Words</div>
+                        </div>
+                        <div class="readability-stat">
+                            <div class="readability-stat-value" id="sentenceCount">--</div>
+                            <div class="readability-stat-label">Sentences</div>
+                        </div>
+                        <div class="readability-stat">
+                            <div class="readability-stat-value" id="avgWordsPerSentence">--</div>
+                            <div class="readability-stat-label">Avg Words/Sentence</div>
+                        </div>
+                    </div>
+                    <div class="readability-interpretation">
+                        <div class="interpretation-icon" id="interpretationIcon">
+                            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
+                        </div>
+                        <div class="interpretation-text" id="interpretationText">
+                            Select a patient and generate a summary to see readability analysis.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="summaryContent">
+                    <div class="summary-placeholder">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" /></svg>
+                        <h3>No Summary Generated</h3>
+                        <p>Select a patient from the list and click "Generate Discharge Summary"</p>
+                    </div>
+                </div>
+
+                <!-- Chunks Reference Section -->
+                <div class="chunks-section" id="chunksSection" style="display: none;">
+                    <div class="chunks-section-title" onclick="toggleChunks()">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" /></svg>
+                        Data Sources Used (RAG Chunks)
+                        <svg class="toggle-icon expanded" id="chunksToggle" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" /></svg>
+                    </div>
+                    <div class="chunks-container" id="chunksContainer">
+                        <div class="chunks-column">
+                            <div class="chunks-column-title">
+                                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
+                                Patient Records
+                            </div>
+                            <div id="patientChunks">
+                                <div class="chunks-empty">No patient chunks loaded</div>
+                            </div>
+                        </div>
+                        <div class="chunks-column">
+                            <div class="chunks-column-title">
+                                <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" /></svg>
+                                Clinical Guidelines Applied
+                            </div>
+                            <div class="guidelines-list" id="guidelineChunks">
+                                <div class="chunks-empty">No clinical guidelines matched</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/js1.js"></script>
+</body>
+</html>

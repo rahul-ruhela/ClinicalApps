@@ -1,9 +1,273 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    Layout = "null";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Document Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div>
+                <span class="logo-text">Clinical<span>Intelligence</span>AI</span>
+            </a>
+            <a href="#" class="nav-cta" onclick="openModal(event)">Demo</a>
+        </div>
+    </nav>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <section class="hero">
+        <h1>AI-Driven <span>Discharge Summaries</span></h1>
+        <p>Transforming clinical documentation with intelligent automation that enhances efficiency while ensuring compliance and quality standards.</p>
+    </section>
+
+    <div class="container">
+        <section class="section-header">
+            <h2>Core Capabilities</h2>
+            <p>Comprehensive features that streamline your clinical workflow</p>
+        </section>
+        <div class="values-grid">
+            <div class="value-card"><div class="value-icon">⚡</div><h3>Operational Excellence</h3><p>Streamline discharge summary creation by up to 70%, enhancing patient flow and facility efficiency.</p></div>
+            <div class="value-card"><div class="value-icon">🎯</div><h3>Quality & Uniformity</h3><p>Utilize clinical templates to auto-fill diagnosis, medications, and treatment data, ensuring consistent documentation.</p></div>
+            <div class="value-card"><div class="value-icon">🔒</div><h3>Compliance Ready</h3><p>Maintain HIPAA standards with comprehensive audit trails for all modifications and approvals.</p></div>
+            <div class="value-card"><div class="value-icon">🔄</div><h3>Seamless Integration</h3><p>Integrates within existing EMR/EHR systems and supports PDF, XML, and JSON export formats.</p></div>
+            <div class="value-card"><div class="value-icon">👥</div><h3>Patient Engagement</h3><p>Generate patient-centered summaries with clear next steps, medication guidance, and lifestyle recommendations.</p></div>
+            <div class="value-card"><div class="value-icon">📈</div><h3>Strategic Impact</h3><p>Accelerate discharges, reduce provider workload, and enhance documentation quality for better outcomes.</p></div>
+        </div>
+
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item"><h3>70%</h3><p>Time Reduction</p></div>
+                <div class="stat-item"><h3>100%</h3><p>HIPAA Compliant</p></div>
+                <div class="stat-item"><h3>50+</h3><p>Healthcare Facilities</p></div>
+                <div class="stat-item"><h3>99.8%</h3><p>Accuracy Rate</p></div>
+            </div>
+        </section>
+
+        <!-- Multi-Language Feature Section -->
+        <section class="language-feature">
+            <div class="language-feature-header">
+                <h2>
+                    <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+                    Multi-Language Support
+                </h2>
+                <p>Generate discharge summaries in the world's most commonly spoken languages</p>
+            </div>
+            <div class="language-grid">
+                <div class="language-card">
+                    <div class="language-flag">🇺🇸</div>
+                    <div class="language-name">English</div>
+                    <div class="language-native">English</div>
+                    <span class="language-badge">Default</span>
+                </div>
+                <div class="language-card">
+                    <div class="language-flag">🇨🇳</div>
+                    <div class="language-name">Chinese</div>
+                    <div class="language-native">中文 (Mandarin)</div>
+                    <span class="language-badge">1.1B Speakers</span>
+                </div>
+                <div class="language-card">
+                    <div class="language-flag">🇮🇳</div>
+                    <div class="language-name">Hindi</div>
+                    <div class="language-native">हिन्दी</div>
+                    <span class="language-badge">600M Speakers</span>
+                </div>
+                <div class="language-card">
+                    <div class="language-flag">🇪🇸</div>
+                    <div class="language-name">Spanish</div>
+                    <div class="language-native">Español</div>
+                    <span class="language-badge">550M Speakers</span>
+                </div>
+                <div class="language-card">
+                    <div class="language-flag">🇸🇦</div>
+                    <div class="language-name">Arabic</div>
+                    <div class="language-native">العربية</div>
+                    <span class="language-badge">420M Speakers</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Readability Score Feature Section -->
+        <section class="readability-feature">
+            <div class="readability-feature-header">
+                <h2>
+                    <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+                    Flesch-Kincaid Readability Analysis
+                </h2>
+                <p>Ensure your discharge summaries are clear and understandable for patients and caregivers</p>
+            </div>
+            <div class="readability-content">
+                <div class="readability-info">
+                    <h3>Evidence-Based Readability Scoring</h3>
+                    <p>Our system automatically calculates the Flesch-Kincaid Reading Grade Level for every discharge summary, helping ensure documentation is accessible to patients of all literacy levels.</p>
+                    <ul class="readability-benefits">
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Instant readability assessment for every generated summary</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Grade level scoring aligned with US education standards</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Detailed statistics: word count, sentences, syllables</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Helps meet health literacy compliance requirements</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="readability-demo">
+                    <div class="readability-demo-header">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        <span>Sample Readability Score</span>
+                    </div>
+                    <div class="grade-display">
+                        <div class="grade-circle-demo">8.2</div>
+                        <div class="grade-info">
+                            <div class="grade-label">Reading Grade Level</div>
+                            <div class="grade-value">Fairly Easy</div>
+                        </div>
+                    </div>
+                    <div class="grade-scale">
+                        <div class="scale-item easy">
+                            <strong>0-8</strong>
+                            Easy
+                        </div>
+                        <div class="scale-item medium">
+                            <strong>9-12</strong>
+                            Standard
+                        </div>
+                        <div class="scale-item hard">
+                            <strong>13+</strong>
+                            Advanced
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Simplification Feature Section -->
+        <section class="simplify-feature">
+            <div class="simplify-feature-header">
+                <h2>
+                    <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                    Smart Simplification for Patients
+                </h2>
+                <p>One-click transformation of clinical language into patient-friendly content targeting 6th-8th grade reading level</p>
+            </div>
+            <div class="simplify-content">
+                <div class="simplify-info">
+                    <h3>Health Literacy Optimization</h3>
+                    <p>Our AI-powered simplification engine transforms complex medical terminology into clear, actionable language that patients can understand and follow, improving health outcomes and compliance.</p>
+                    <ul class="simplify-benefits">
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Shortens sentences to 10-15 words for easier comprehension</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Replaces medical jargon with everyday language</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Uses active voice and patient-directed writing style</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Converts paragraphs to easy-to-scan bullet points</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Side-by-side comparison with readability metrics</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="simplify-demo">
+                    <div class="simplify-comparison">
+                        <div class="comparison-box before">
+                            <div class="comparison-label">
+                                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+                                Original
+                            </div>
+                            <div class="comparison-text">"Patient demonstrated adequate glycemic control with HbA1c of 7.2%, pharmacotherapy optimized with metformin titration."</div>
+                            <span class="comparison-grade">Grade 14</span>
+                        </div>
+                        <div class="comparison-box after">
+                            <div class="comparison-label">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                Simplified
+                            </div>
+                            <div class="comparison-text">"Your blood sugar is well controlled. We adjusted your metformin dose to work better for you."</div>
+                            <span class="comparison-grade">Grade 7</span>
+                        </div>
+                    </div>
+                    <div class="simplify-improvement">
+                        <div class="simplify-improvement-value">-7 Grade Levels</div>
+                        <div class="simplify-improvement-label">Average Readability Improvement</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-header">
+            <h2>Strategic Benefits</h2>
+            <p>Measurable improvements across your healthcare organization</p>
+        </section>
+        <div class="values-grid">
+            <div class="value-card"><div class="value-icon">🚀</div><h3>Faster Discharges</h3><p>Expedite patient turnover with automated summary generation, improving bed availability.</p></div>
+            <div class="value-card"><div class="value-icon">💼</div><h3>Reduced Workload</h3><p>Free clinicians from administrative burdens, allowing more focus on direct patient care.</p></div>
+            <div class="value-card"><div class="value-icon">✅</div><h3>Enhanced Quality</h3><p>Improve documentation completeness and accuracy with AI-driven validation.</p></div>
+            <div class="value-card"><div class="value-icon">😊</div><h3>Patient Satisfaction</h3><p>Deliver clear, comprehensive discharge information that empowers patients in their care journey.</p></div>
+            <div class="value-card"><div class="value-icon">🔄</div><h3>Coordinated Care</h3><p>Streamline post-discharge coordination to minimize readmissions and ensure continuity.</p></div>
+            <div class="value-card"><div class="value-icon">💰</div><h3>Cost Efficiency</h3><p>Optimize resource utilization and reduce administrative overhead across departments.</p></div>
+        </div>
+
+        <section class="cta-section">
+            <h2>Transform Your Clinical Documentation Today</h2>
+            <p>Experience the next generation of automated discharge summaries powered by advanced AI technology.</p>
+            <a href="#" class="cta-btn" onclick="openModal(event)">Request a Demo</a>
+        </section>
+    </div>
+
+    <footer class="footer"><p>&copy; 2024 Clinical Document Assistant. All rights reserved. | Powered by Agentic AI</p></footer>
+
+    <!-- User Registration Modal -->
+    <div class="modal-overlay" id="userModal">
+        <div class="modal-wrapper">
+            <div class="modal">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div class="modal-header">
+                    <h2>Access the Demo</h2>
+                    <p>Please enter your details to access the discharge summary demo</p>
+                </div>
+                <form class="modal-form" id="userForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" name="name" placeholder="Enter your full name" required>
+                        <div class="form-error" id="nameError">Please enter your name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" name="email" placeholder="Enter your email address" required>
+                        <div class="form-error" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    <button type="submit" class="modal-submit" id="submitBtn">Access Demo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/site.js"></script>
+ 
+</body>
+</html>
+
