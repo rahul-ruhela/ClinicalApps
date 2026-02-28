@@ -1,0 +1,763 @@
+{
+  "patient_records": [
+    {
+      "record_id": "EHR-001",
+      "record_type": "progress_note",
+      "patient": {
+        "patient_id": "PAT-10001",
+        "name": "Robert James Thompson",
+        "dob": "1965-03-15",
+        "gender": "Male",
+        "mrn": "MRN-2024-10001"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240115-001",
+        "date_of_service": "2024-01-15",
+        "provider": "Dr. Sarah Mitchell, MD",
+        "facility": "Downtown Medical Center",
+        "department": "Internal Medicine"
+      },
+      "clinical_note": {
+        "chief_complaint": "Follow-up for Type 2 Diabetes and Hypertension",
+        "hpi": "58-year-old male with history of Type 2 Diabetes Mellitus (5 years) and Hypertension (8 years) presenting for routine follow-up. Patient reports good compliance with medications. Checking blood sugars at home, ranging 110-145 mg/dL fasting. Denies polyuria, polydipsia, or blurred vision. No chest pain, shortness of breath, or lower extremity edema.",
+        "medications": [
+          {"name": "Metformin", "dose": "1000mg", "frequency": "BID"},
+          {"name": "Lisinopril", "dose": "20mg", "frequency": "Daily"},
+          {"name": "Atorvastatin", "dose": "40mg", "frequency": "Daily at bedtime"}
+        ],
+        "allergies": ["Penicillin - rash"],
+        "vitals": {
+          "blood_pressure": "128/78 mmHg",
+          "heart_rate": "72 bpm",
+          "temperature": "98.4 F",
+          "respiratory_rate": "16/min",
+          "oxygen_saturation": "98% on RA",
+          "weight": "198 lbs",
+          "height": "5'10\""
+        },
+        "physical_exam": {
+          "general": "Alert, oriented, no acute distress",
+          "heent": "PERRLA, EOMI, oropharynx clear",
+          "cardiovascular": "RRR, no murmurs, rubs, or gallops",
+          "respiratory": "Clear to auscultation bilaterally",
+          "abdomen": "Soft, non-tender, non-distended, normoactive bowel sounds",
+          "extremities": "No edema, pulses 2+ bilaterally, monofilament exam normal"
+        },
+        "labs": {
+          "date": "2024-01-10",
+          "results": [
+            {"test": "HbA1c", "value": "6.8", "unit": "%", "reference": "<7.0"},
+            {"test": "Fasting Glucose", "value": "118", "unit": "mg/dL", "reference": "70-100"},
+            {"test": "Creatinine", "value": "1.0", "unit": "mg/dL", "reference": "0.7-1.3"},
+            {"test": "eGFR", "value": "88", "unit": "mL/min/1.73m2", "reference": ">60"}
+          ]
+        },
+        "assessment": [
+          {"diagnosis": "Type 2 Diabetes Mellitus without complications", "icd10": "E11.9", "status": "Well controlled"},
+          {"diagnosis": "Essential Hypertension", "icd10": "I10", "status": "Controlled"}
+        ],
+        "plan": [
+          "Continue Metformin 1000mg BID",
+          "Continue Lisinopril 20mg daily",
+          "Continue Atorvastatin 40mg at bedtime",
+          "Reinforce diet and exercise counseling",
+          "Recheck HbA1c in 3 months",
+          "Annual diabetic eye exam - ordered",
+          "Follow-up in 3 months"
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Sarah Mitchell, MD",
+        "signed_date": "2024-01-15T16:45:00Z",
+        "credentials": "MD, Board Certified Internal Medicine"
+      }
+    },
+    {
+      "record_id": "EHR-002",
+      "record_type": "discharge_summary",
+      "patient": {
+        "patient_id": "PAT-10002",
+        "name": "Margaret Elizabeth Wilson",
+        "dob": "1958-07-22",
+        "gender": "Female",
+        "mrn": "MRN-2024-10002"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240112-002",
+        "admission_date": "2024-01-08",
+        "discharge_date": "2024-01-12",
+        "provider": "Dr. Michael Chen, MD",
+        "facility": "City General Hospital",
+        "department": "Cardiology"
+      },
+      "discharge_summary": {
+        "admission_diagnosis": "Acute exacerbation of congestive heart failure",
+        "discharge_diagnosis": [
+          {"diagnosis": "Congestive heart failure, acute on chronic, systolic", "icd10": "I50.23"},
+          {"diagnosis": "Atrial fibrillation with rapid ventricular response", "icd10": "I48.91"},
+          {"diagnosis": "Type 2 Diabetes Mellitus", "icd10": "E11.9"},
+          {"diagnosis": "Chronic kidney disease, stage 3", "icd10": "N18.3"}
+        ],
+        "hospital_course": "65-year-old female admitted with 3-day history of worsening dyspnea, orthopnea, and lower extremity edema. Initial BNP elevated at 1850 pg/mL. Chest X-ray showed bilateral pleural effusions and pulmonary vascular congestion. EKG revealed atrial fibrillation with RVR at 124 bpm. Patient was started on IV Lasix with good diuretic response, losing 8 lbs of fluid weight. Rate control achieved with Metoprolol. Echocardiogram showed EF of 35%, moderate mitral regurgitation. Cardiology consulted and recommended optimization of GDMT. Patient's symptoms improved significantly with diuresis. Converted to oral medications on day 3 with stable vitals and improved exercise tolerance.",
+        "procedures": [
+          {"procedure": "Transthoracic Echocardiogram", "cpt": "93306", "date": "2024-01-09"},
+          {"procedure": "Right heart catheterization", "cpt": "93451", "date": "2024-01-10"}
+        ],
+        "discharge_medications": [
+          {"name": "Furosemide", "dose": "40mg", "frequency": "BID", "instructions": "Take in morning and early afternoon"},
+          {"name": "Metoprolol Succinate", "dose": "50mg", "frequency": "Daily"},
+          {"name": "Lisinopril", "dose": "10mg", "frequency": "Daily"},
+          {"name": "Spironolactone", "dose": "25mg", "frequency": "Daily"},
+          {"name": "Apixaban", "dose": "5mg", "frequency": "BID"},
+          {"name": "Metformin", "dose": "500mg", "frequency": "BID"}
+        ],
+        "discharge_vitals": {
+          "blood_pressure": "118/72 mmHg",
+          "heart_rate": "78 bpm",
+          "temperature": "98.2 F",
+          "oxygen_saturation": "96% on RA",
+          "weight": "165 lbs"
+        },
+        "discharge_instructions": [
+          "Daily weight monitoring - call if gain >3 lbs in 1 day or >5 lbs in 1 week",
+          "Fluid restriction 1.5-2 liters per day",
+          "Low sodium diet (<2g/day)",
+          "Activity as tolerated, cardiac rehab referral placed",
+          "Follow-up with Cardiology in 1 week",
+          "Follow-up with PCP in 2 weeks"
+        ],
+        "follow_up": [
+          {"specialty": "Cardiology", "provider": "Dr. Michael Chen", "timeframe": "1 week"},
+          {"specialty": "Primary Care", "provider": "Dr. Lisa Brown", "timeframe": "2 weeks"}
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Michael Chen, MD",
+        "signed_date": "2024-01-12T14:30:00Z",
+        "credentials": "MD, FACC, Board Certified Cardiology"
+      }
+    },
+    {
+      "record_id": "EHR-003",
+      "record_type": "progress_note",
+      "patient": {
+        "patient_id": "PAT-10003",
+        "name": "David Anthony Martinez",
+        "dob": "1972-11-08",
+        "gender": "Male",
+        "mrn": "MRN-2024-10003"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240118-003",
+        "date_of_service": "2024-01-18",
+        "provider": "Dr. Jennifer Adams, MD",
+        "facility": "Orthopedic Specialists Clinic",
+        "department": "Orthopedic Surgery"
+      },
+      "clinical_note": {
+        "chief_complaint": "Right knee pain and stiffness, post-operative follow-up",
+        "hpi": "51-year-old male status post right total knee arthroplasty 6 weeks ago for severe osteoarthritis. Patient reports progressive improvement in pain and mobility. Currently ambulating with single-point cane. Performing home physical therapy exercises as instructed. Denies fever, chills, wound drainage, or calf pain. Pain level 3/10 at rest, 5/10 with activity.",
+        "surgical_history": {
+          "procedure": "Right Total Knee Arthroplasty",
+          "date": "2023-12-05",
+          "surgeon": "Dr. Jennifer Adams, MD",
+          "implant": "Zimmer NexGen LPS-Flex"
+        },
+        "medications": [
+          {"name": "Oxycodone", "dose": "5mg", "frequency": "Q6H PRN", "note": "Using 1-2 tablets daily"},
+          {"name": "Aspirin", "dose": "325mg", "frequency": "Daily", "note": "DVT prophylaxis"},
+          {"name": "Acetaminophen", "dose": "1000mg", "frequency": "TID"}
+        ],
+        "allergies": ["No known drug allergies"],
+        "vitals": {
+          "blood_pressure": "132/82 mmHg",
+          "heart_rate": "76 bpm",
+          "temperature": "98.6 F",
+          "oxygen_saturation": "99% on RA"
+        },
+        "physical_exam": {
+          "general": "Well-appearing, comfortable",
+          "right_knee": {
+            "incision": "Well-healed, no erythema, no drainage, staples removed",
+            "rom": "0-115 degrees (improved from 0-95 at 2 weeks)",
+            "strength": "4/5 quadriceps, 4+/5 hamstrings",
+            "stability": "Stable to varus/valgus stress",
+            "effusion": "Minimal",
+            "pulses": "Dorsalis pedis and posterior tibial 2+ bilaterally"
+          }
+        },
+        "imaging": {
+          "type": "X-ray right knee, 3 views",
+          "date": "2024-01-18",
+          "findings": "Prosthesis in good position, no evidence of loosening or periprosthetic fracture"
+        },
+        "assessment": [
+          {"diagnosis": "Status post right total knee arthroplasty", "icd10": "Z96.651", "status": "Progressing well"},
+          {"diagnosis": "Osteoarthritis of right knee", "icd10": "M17.11", "status": "Resolved with surgery"}
+        ],
+        "plan": [
+          "Continue outpatient physical therapy 2-3x/week for 6 more weeks",
+          "Wean off opioid pain medication over next 2 weeks",
+          "Continue aspirin for 2 more weeks, then discontinue",
+          "May progress to cane-free ambulation as tolerated",
+          "Return to driving in 2 weeks if off narcotics",
+          "Follow-up in 6 weeks with X-rays"
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Jennifer Adams, MD",
+        "signed_date": "2024-01-18T11:20:00Z",
+        "credentials": "MD, Board Certified Orthopedic Surgery"
+      }
+    },
+    {
+      "record_id": "EHR-004",
+      "record_type": "discharge_summary",
+      "patient": {
+        "patient_id": "PAT-10004",
+        "name": "Susan Marie Johnson",
+        "dob": "1980-04-30",
+        "gender": "Female",
+        "mrn": "MRN-2024-10004"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240110-004",
+        "admission_date": "2024-01-07",
+        "discharge_date": "2024-01-10",
+        "provider": "Dr. Robert Williams, MD",
+        "facility": "University Medical Center",
+        "department": "General Surgery"
+      },
+      "discharge_summary": {
+        "admission_diagnosis": "Acute cholecystitis with cholelithiasis",
+        "discharge_diagnosis": [
+          {"diagnosis": "Acute cholecystitis", "icd10": "K81.0"},
+          {"diagnosis": "Cholelithiasis", "icd10": "K80.20"}
+        ],
+        "hospital_course": "43-year-old female presented to ED with 2-day history of severe right upper quadrant pain radiating to right shoulder, associated with nausea and vomiting after fatty meal. Labs significant for WBC 14.2, elevated LFTs (AST 89, ALT 112, ALP 156). RUQ ultrasound showed multiple gallstones with gallbladder wall thickening (5mm) and pericholecystic fluid, positive sonographic Murphy's sign. HIDA scan showed non-visualization of gallbladder consistent with acute cholecystitis. Patient made NPO, started on IV fluids and Piperacillin-Tazobactam. Underwent laparoscopic cholecystectomy on hospital day 2 without complications. Operative time 45 minutes, minimal blood loss. Tolerated clear liquids on POD1, advanced to regular diet. Pain well controlled with oral medications. Afebrile with normalizing WBC at discharge.",
+        "procedures": [
+          {"procedure": "Laparoscopic Cholecystectomy", "cpt": "47562", "date": "2024-01-08", "surgeon": "Dr. Robert Williams, MD"}
+        ],
+        "pathology": "Gallbladder with acute and chronic cholecystitis, multiple cholesterol stones, largest 1.2 cm",
+        "discharge_medications": [
+          {"name": "Oxycodone/Acetaminophen 5/325", "dose": "1-2 tablets", "frequency": "Q4-6H PRN", "quantity": "20 tablets"},
+          {"name": "Ibuprofen", "dose": "400mg", "frequency": "Q6H PRN", "instructions": "Take with food"},
+          {"name": "Docusate Sodium", "dose": "100mg", "frequency": "BID", "instructions": "While taking pain medication"}
+        ],
+        "discharge_vitals": {
+          "blood_pressure": "122/76 mmHg",
+          "heart_rate": "74 bpm",
+          "temperature": "98.4 F",
+          "oxygen_saturation": "99% on RA"
+        },
+        "discharge_instructions": [
+          "Incision care: Keep clean and dry, may shower after 48 hours",
+          "No heavy lifting (>10 lbs) for 2 weeks",
+          "Low-fat diet for 1-2 weeks, then resume normal diet as tolerated",
+          "Call if fever >101.5F, worsening pain, wound redness/drainage, or jaundice",
+          "Return to work in 1-2 weeks depending on job requirements"
+        ],
+        "follow_up": [
+          {"specialty": "General Surgery", "provider": "Dr. Robert Williams", "timeframe": "2 weeks"}
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Robert Williams, MD",
+        "signed_date": "2024-01-10T10:15:00Z",
+        "credentials": "MD, FACS, Board Certified General Surgery"
+      }
+    },
+    {
+      "record_id": "EHR-005",
+      "record_type": "progress_note",
+      "patient": {
+        "patient_id": "PAT-10005",
+        "name": "William Charles Anderson",
+        "dob": "1955-09-12",
+        "gender": "Male",
+        "mrn": "MRN-2024-10005"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240120-005",
+        "date_of_service": "2024-01-20",
+        "provider": "Dr. Amanda Foster, MD",
+        "facility": "Pulmonary & Sleep Medicine Associates",
+        "department": "Pulmonology"
+      },
+      "clinical_note": {
+        "chief_complaint": "COPD exacerbation follow-up, persistent dyspnea",
+        "hpi": "68-year-old male with 40 pack-year smoking history, COPD GOLD Stage III, presenting for follow-up after recent ED visit for COPD exacerbation 2 weeks ago. Completed Prednisone taper and Azithromycin course. Reports improvement but still experiencing dyspnea on exertion, able to walk one block before needing to rest. Using rescue inhaler 3-4 times daily. Quit smoking 3 years ago. Denies fever, productive cough, or hemoptysis. Home oxygen at 2L NC at rest, increases to 4L with activity.",
+        "past_medical_history": [
+          "COPD, diagnosed 2018",
+          "Coronary artery disease, s/p CABG 2019",
+          "Hypertension",
+          "Hyperlipidemia"
+        ],
+        "medications": [
+          {"name": "Tiotropium", "dose": "18mcg", "frequency": "Daily via inhaler"},
+          {"name": "Fluticasone/Vilanterol", "dose": "100/25mcg", "frequency": "Daily via inhaler"},
+          {"name": "Albuterol", "dose": "90mcg", "frequency": "Q4H PRN via MDI"},
+          {"name": "Oxygen", "dose": "2-4L", "frequency": "Continuous via nasal cannula"},
+          {"name": "Aspirin", "dose": "81mg", "frequency": "Daily"},
+          {"name": "Metoprolol", "dose": "25mg", "frequency": "BID"},
+          {"name": "Lisinopril", "dose": "10mg", "frequency": "Daily"},
+          {"name": "Atorvastatin", "dose": "80mg", "frequency": "Daily"}
+        ],
+        "allergies": ["Sulfa drugs - hives"],
+        "vitals": {
+          "blood_pressure": "138/84 mmHg",
+          "heart_rate": "82 bpm",
+          "temperature": "98.2 F",
+          "respiratory_rate": "20/min",
+          "oxygen_saturation": "92% on 2L NC",
+          "weight": "172 lbs"
+        },
+        "physical_exam": {
+          "general": "Chronically ill-appearing male, speaking in short sentences",
+          "respiratory": "Decreased breath sounds bilaterally, prolonged expiratory phase, scattered expiratory wheezes, no crackles, accessory muscle use noted",
+          "cardiovascular": "RRR, no murmurs",
+          "extremities": "No edema, no clubbing"
+        },
+        "diagnostics": {
+          "spirometry": {
+            "date": "2024-01-20",
+            "fev1": "1.2L (42% predicted)",
+            "fvc": "2.8L (78% predicted)",
+            "fev1_fvc_ratio": "43%",
+            "interpretation": "Severe obstruction, no significant bronchodilator response"
+          },
+          "6mwt": {
+            "date": "2024-01-20",
+            "distance": "280 meters",
+            "baseline_spo2": "92%",
+            "nadir_spo2": "84%",
+            "borg_dyspnea": "7/10"
+          }
+        },
+        "assessment": [
+          {"diagnosis": "COPD with acute exacerbation, now resolving", "icd10": "J44.1", "status": "Improving"},
+          {"diagnosis": "Chronic respiratory failure with hypoxemia", "icd10": "J96.11", "status": "Stable on home O2"}
+        ],
+        "plan": [
+          "Add Roflumilast 500mcg daily for frequent exacerbation prevention",
+          "Continue current inhaler regimen",
+          "Increase home oxygen to 3L at rest, 5L with activity based on 6MWT",
+          "Pulmonary rehabilitation referral - 12 week program",
+          "Annual influenza vaccine - given today",
+          "Pneumococcal vaccines up to date",
+          "Follow-up in 4 weeks"
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Amanda Foster, MD",
+        "signed_date": "2024-01-20T15:30:00Z",
+        "credentials": "MD, Board Certified Pulmonary and Critical Care Medicine"
+      }
+    },
+    {
+      "record_id": "EHR-006",
+      "record_type": "discharge_summary",
+      "patient": {
+        "patient_id": "PAT-10006",
+        "name": "Patricia Ann Davis",
+        "dob": "1968-02-28",
+        "gender": "Female",
+        "mrn": "MRN-2024-10006"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240115-006",
+        "admission_date": "2024-01-12",
+        "discharge_date": "2024-01-15",
+        "provider": "Dr. Steven Park, MD",
+        "facility": "Mercy Hospital",
+        "department": "Neurology"
+      },
+      "discharge_summary": {
+        "admission_diagnosis": "Acute ischemic stroke, left MCA territory",
+        "discharge_diagnosis": [
+          {"diagnosis": "Acute ischemic stroke, left MCA", "icd10": "I63.512"},
+          {"diagnosis": "Atrial fibrillation, newly diagnosed", "icd10": "I48.91"},
+          {"diagnosis": "Essential hypertension", "icd10": "I10"},
+          {"diagnosis": "Dysphagia following cerebral infarction", "icd10": "I69.391"}
+        ],
+        "hospital_course": "55-year-old female brought to ED by EMS with acute onset right-sided weakness and speech difficulty. Last known well 90 minutes prior. Initial NIHSS 12. CT head negative for hemorrhage. CTA showed left M1 occlusion. Patient received IV tPA within window and underwent mechanical thrombectomy with successful recanalization (TICI 3). Post-procedure NIHSS improved to 4 with residual right facial droop and mild right arm weakness. MRI showed left MCA territory infarct involving left frontal and parietal lobes. Telemetry revealed new atrial fibrillation. Echo showed normal EF without thrombus. Started on anticoagulation with Apixaban. Speech therapy evaluated - mild dysarthria with intact comprehension, diet upgraded to dysphagia soft. PT/OT evaluated - ambulating with supervision, independent with ADLs. Transferred to acute rehab for continued therapy.",
+        "procedures": [
+          {"procedure": "Mechanical thrombectomy, left MCA", "cpt": "61645", "date": "2024-01-12"},
+          {"procedure": "CT Head without contrast", "cpt": "70450", "date": "2024-01-12"},
+          {"procedure": "CT Angiography head and neck", "cpt": "70496", "date": "2024-01-12"},
+          {"procedure": "MRI Brain without contrast", "cpt": "70551", "date": "2024-01-13"},
+          {"procedure": "Transthoracic Echocardiogram", "cpt": "93306", "date": "2024-01-13"}
+        ],
+        "discharge_medications": [
+          {"name": "Apixaban", "dose": "5mg", "frequency": "BID"},
+          {"name": "Atorvastatin", "dose": "80mg", "frequency": "Daily"},
+          {"name": "Lisinopril", "dose": "10mg", "frequency": "Daily"},
+          {"name": "Amlodipine", "dose": "5mg", "frequency": "Daily"},
+          {"name": "Metoprolol Tartrate", "dose": "25mg", "frequency": "BID"}
+        ],
+        "discharge_vitals": {
+          "blood_pressure": "128/78 mmHg",
+          "heart_rate": "72 bpm (rate controlled)",
+          "temperature": "98.4 F",
+          "oxygen_saturation": "97% on RA"
+        },
+        "discharge_condition": "Stable, improved. NIHSS 3 at discharge.",
+        "discharge_disposition": "Acute Inpatient Rehabilitation Facility",
+        "discharge_instructions": [
+          "Continue all medications as prescribed",
+          "Dysphagia diet - soft foods, thin liquids",
+          "Fall precautions, use assistive device for ambulation",
+          "Signs of stroke: FAST - Face drooping, Arm weakness, Speech difficulty, Time to call 911",
+          "No driving until cleared by neurology"
+        ],
+        "follow_up": [
+          {"specialty": "Neurology", "provider": "Dr. Steven Park", "timeframe": "2 weeks after rehab discharge"},
+          {"specialty": "Cardiology", "provider": "Dr. Emily Watson", "timeframe": "4 weeks for afib management"},
+          {"specialty": "Primary Care", "provider": "Dr. James Miller", "timeframe": "1 week after rehab discharge"}
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Steven Park, MD",
+        "signed_date": "2024-01-15T12:00:00Z",
+        "credentials": "MD, Board Certified Vascular Neurology"
+      }
+    },
+    {
+      "record_id": "EHR-007",
+      "record_type": "progress_note",
+      "patient": {
+        "patient_id": "PAT-10007",
+        "name": "Jennifer Lynn Taylor",
+        "dob": "1985-06-14",
+        "gender": "Female",
+        "mrn": "MRN-2024-10007"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240122-007",
+        "date_of_service": "2024-01-22",
+        "provider": "Dr. Rachel Kim, MD",
+        "facility": "Women's Health Center",
+        "department": "Obstetrics and Gynecology"
+      },
+      "clinical_note": {
+        "chief_complaint": "Prenatal visit - 28 weeks gestation",
+        "hpi": "38-year-old G2P1 at 28 weeks 3 days gestation by LMP confirmed by first trimester ultrasound. Pregnancy has been uncomplicated. Reports good fetal movement, denies vaginal bleeding, leakage of fluid, or contractions. Mild lower back discomfort. No headaches, visual changes, or epigastric pain. Reports occasional heartburn controlled with Tums.",
+        "obstetric_history": {
+          "gravida": 2,
+          "para": 1,
+          "prior_pregnancies": [
+            {"year": 2019, "outcome": "Term vaginal delivery", "weight": "7 lbs 8 oz", "complications": "None"}
+          ],
+          "lmp": "2023-07-03",
+          "edd": "2024-04-09",
+          "current_ga": "28 weeks 3 days"
+        },
+        "prenatal_labs": {
+          "blood_type": "O positive",
+          "antibody_screen": "Negative",
+          "rubella": "Immune",
+          "hbsag": "Negative",
+          "hiv": "Negative",
+          "rpr": "Non-reactive",
+          "gcr_culture": "Pending (collected today)",
+          "glucose_challenge_1hr": "118 mg/dL (normal)"
+        },
+        "medications": [
+          {"name": "Prenatal Vitamin", "dose": "1 tablet", "frequency": "Daily"},
+          {"name": "Iron Supplement", "dose": "65mg", "frequency": "Daily"},
+          {"name": "Calcium/Vitamin D", "dose": "600mg/400IU", "frequency": "BID"}
+        ],
+        "allergies": ["No known drug allergies"],
+        "vitals": {
+          "blood_pressure": "118/72 mmHg",
+          "heart_rate": "82 bpm",
+          "weight": "162 lbs",
+          "weight_gain": "+22 lbs from pre-pregnancy"
+        },
+        "physical_exam": {
+          "general": "Well-appearing, comfortable",
+          "abdomen": {
+            "fundal_height": "28 cm (appropriate for gestational age)",
+            "fetal_presentation": "Cephalic",
+            "fetal_heart_tones": "145 bpm by doppler"
+          },
+          "extremities": "Trace bilateral pedal edema, reflexes 2+"
+        },
+        "ultrasound": {
+          "date": "2024-01-22",
+          "findings": {
+            "fetal_biometry": "Consistent with 28 weeks 2 days",
+            "efw": "2 lbs 8 oz (55th percentile)",
+            "afv": "14 cm (normal)",
+            "placenta": "Posterior, grade 1, >2cm from internal os",
+            "fetal_anatomy": "Normal, no anomalies identified"
+          }
+        },
+        "assessment": [
+          {"diagnosis": "Pregnancy, 28 weeks", "icd10": "Z34.02", "status": "Normal progression"},
+          {"diagnosis": "Advanced maternal age", "icd10": "O09.512", "status": "Monitoring"}
+        ],
+        "plan": [
+          "Rhogam injection given today (28 week dose)",
+          "Tdap vaccine given today",
+          "Begin kick counts - 10 movements in 2 hours",
+          "Continue prenatal vitamins and supplements",
+          "Discussed signs of preterm labor and preeclampsia",
+          "Schedule growth ultrasound at 32 weeks",
+          "Return in 2 weeks for routine prenatal visit",
+          "Transition to weekly visits at 36 weeks"
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Rachel Kim, MD",
+        "signed_date": "2024-01-22T14:15:00Z",
+        "credentials": "MD, Board Certified Obstetrics and Gynecology"
+      }
+    },
+    {
+      "record_id": "EHR-008",
+      "record_type": "progress_note",
+      "patient": {
+        "patient_id": "PAT-10008",
+        "name": "James Edward Brown",
+        "dob": "1948-12-05",
+        "gender": "Male",
+        "mrn": "MRN-2024-10008"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240119-008",
+        "date_of_service": "2024-01-19",
+        "provider": "Dr. Andrew Thompson, MD",
+        "facility": "Urology Associates",
+        "department": "Urology"
+      },
+      "clinical_note": {
+        "chief_complaint": "Follow-up for prostate cancer, post-radiation",
+        "hpi": "75-year-old male with history of localized prostate adenocarcinoma (Gleason 3+4=7, T2aN0M0) treated with external beam radiation therapy completed 6 months ago. Patient reports good urinary function with mild frequency and nocturia x2. No dysuria, hematuria, or incontinence. Bowel function normal, occasional loose stools. No bone pain. Maintaining good performance status.",
+        "cancer_history": {
+          "diagnosis": "Prostate adenocarcinoma",
+          "date_diagnosed": "2023-04-15",
+          "stage": "T2aN0M0",
+          "gleason_score": "3+4=7",
+          "pre_treatment_psa": "8.2 ng/mL",
+          "treatment": {
+            "type": "External Beam Radiation Therapy (IMRT)",
+            "total_dose": "78 Gy in 39 fractions",
+            "completed": "2023-07-20"
+          }
+        },
+        "medications": [
+          {"name": "Tamsulosin", "dose": "0.4mg", "frequency": "Daily at bedtime"},
+          {"name": "Aspirin", "dose": "81mg", "frequency": "Daily"},
+          {"name": "Lisinopril", "dose": "20mg", "frequency": "Daily"},
+          {"name": "Metformin", "dose": "500mg", "frequency": "BID"}
+        ],
+        "allergies": ["Codeine - nausea"],
+        "vitals": {
+          "blood_pressure": "134/78 mmHg",
+          "heart_rate": "68 bpm",
+          "weight": "185 lbs"
+        },
+        "physical_exam": {
+          "general": "Well-appearing elderly male",
+          "genitourinary": {
+            "dre": "Prostate small, firm, no nodules, non-tender",
+            "external_genitalia": "Normal"
+          },
+          "abdomen": "Soft, non-tender, no masses"
+        },
+        "labs": {
+          "date": "2024-01-17",
+          "results": [
+            {"test": "PSA", "value": "0.8", "unit": "ng/mL", "reference": "<4.0", "prior": "1.4 (3 months ago)"},
+            {"test": "Testosterone", "value": "385", "unit": "ng/dL", "reference": "264-916"}
+          ]
+        },
+        "assessment": [
+          {"diagnosis": "Prostate cancer, status post definitive radiation", "icd10": "Z85.46", "status": "No evidence of recurrence"},
+          {"diagnosis": "Radiation cystitis, mild", "icd10": "N30.40", "status": "Improving"}
+        ],
+        "plan": [
+          "PSA declining appropriately - excellent response to treatment",
+          "Continue Tamsulosin for urinary symptoms",
+          "Repeat PSA in 3 months",
+          "Continue surveillance per NCCN guidelines",
+          "Discussed excellent prognosis given PSA response",
+          "Annual DRE",
+          "Follow-up in 3 months"
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Andrew Thompson, MD",
+        "signed_date": "2024-01-19T10:45:00Z",
+        "credentials": "MD, Board Certified Urology, Fellowship Trained Urologic Oncology"
+      }
+    },
+    {
+      "record_id": "EHR-009",
+      "record_type": "discharge_summary",
+      "patient": {
+        "patient_id": "PAT-10009",
+        "name": "Maria Elena Rodriguez",
+        "dob": "1990-08-20",
+        "gender": "Female",
+        "mrn": "MRN-2024-10009"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240116-009",
+        "admission_date": "2024-01-14",
+        "discharge_date": "2024-01-16",
+        "provider": "Dr. Kevin O'Brien, MD",
+        "facility": "Community General Hospital",
+        "department": "Psychiatry"
+      },
+      "discharge_summary": {
+        "admission_diagnosis": "Major depressive disorder with suicidal ideation",
+        "discharge_diagnosis": [
+          {"diagnosis": "Major depressive disorder, severe, recurrent", "icd10": "F33.2"},
+          {"diagnosis": "Generalized anxiety disorder", "icd10": "F41.1"}
+        ],
+        "hospital_course": "33-year-old female voluntarily admitted to inpatient psychiatry following presentation to ED with suicidal ideation with plan (overdose). Patient reported worsening depression over past 2 months following job loss and relationship difficulties. Denied prior suicide attempts. Was previously on Sertraline 100mg which she self-discontinued 3 months ago due to side effects. On admission, PHQ-9 score 24, Columbia Suicide Severity Score indicated moderate risk. Started on Escitalopram 10mg with plan for titration. Participated actively in group therapy and individual counseling. By day 2, patient reported improvement in mood and denied suicidal ideation. Safety plan developed with patient. Family meeting held with sister who will provide support post-discharge. Discharged with no SI/HI, future-oriented, and engaged with outpatient follow-up plan.",
+        "mental_status_exam_discharge": {
+          "appearance": "Well-groomed, age-appropriate attire",
+          "behavior": "Cooperative, good eye contact",
+          "speech": "Normal rate, rhythm, and volume",
+          "mood": "Better",
+          "affect": "Mood-congruent, reactive",
+          "thought_process": "Linear, goal-directed",
+          "thought_content": "No SI/HI, no delusions",
+          "perception": "No hallucinations",
+          "cognition": "Alert, oriented x4, intact memory",
+          "insight_judgment": "Fair/Fair"
+        },
+        "discharge_medications": [
+          {"name": "Escitalopram", "dose": "10mg", "frequency": "Daily in morning"},
+          {"name": "Hydroxyzine", "dose": "25mg", "frequency": "TID PRN for anxiety"},
+          {"name": "Trazodone", "dose": "50mg", "frequency": "At bedtime PRN for insomnia"}
+        ],
+        "discharge_instructions": [
+          "Take medications as prescribed, do not stop abruptly",
+          "Attend all scheduled outpatient appointments",
+          "Implement safety plan if experiencing suicidal thoughts",
+          "Crisis hotline: 988 (Suicide & Crisis Lifeline)",
+          "Go to nearest ED if experiencing thoughts of self-harm",
+          "Avoid alcohol and recreational drugs",
+          "Maintain regular sleep schedule",
+          "Resume exercise and social activities gradually"
+        ],
+        "safety_plan": {
+          "warning_signs": ["Isolating from family", "Not sleeping", "Increased crying"],
+          "coping_strategies": ["Call sister", "Go for a walk", "Practice deep breathing"],
+          "support_contacts": ["Sister - Maria (555-123-4567)", "Best friend - Ana (555-234-5678)"],
+          "professional_resources": ["Outpatient therapist", "Psychiatrist", "Crisis line 988"],
+          "environment_safety": "Lethal means counseling completed, medications to be stored by sister"
+        },
+        "follow_up": [
+          {"specialty": "Psychiatry", "provider": "Dr. Kevin O'Brien", "timeframe": "1 week", "appointment": "2024-01-23 at 2:00 PM"},
+          {"specialty": "Therapy", "provider": "Licensed Clinical Social Worker", "timeframe": "3 days", "appointment": "2024-01-19 at 10:00 AM"}
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Kevin O'Brien, MD",
+        "signed_date": "2024-01-16T16:00:00Z",
+        "credentials": "MD, Board Certified Psychiatry"
+      }
+    },
+    {
+      "record_id": "EHR-010",
+      "record_type": "progress_note",
+      "patient": {
+        "patient_id": "PAT-10010",
+        "name": "Thomas Richard Lee",
+        "dob": "1962-05-18",
+        "gender": "Male",
+        "mrn": "MRN-2024-10010"
+      },
+      "encounter": {
+        "encounter_id": "ENC-20240123-010",
+        "date_of_service": "2024-01-23",
+        "provider": "Dr. Catherine Wu, MD",
+        "facility": "Rheumatology Specialists",
+        "department": "Rheumatology"
+      },
+      "clinical_note": {
+        "chief_complaint": "Rheumatoid arthritis follow-up, joint pain",
+        "hpi": "61-year-old male with 8-year history of seropositive rheumatoid arthritis on current regimen of Methotrexate and Adalimumab. Reports recent flare with increased bilateral hand and wrist pain and stiffness over past 3 weeks. Morning stiffness lasting 90 minutes (previously 20 minutes). No new joint swelling. Denies fever, rash, or eye symptoms. Compliant with medications. Received Adalimumab injection 5 days ago.",
+        "past_medical_history": [
+          "Rheumatoid arthritis, diagnosed 2016",
+          "Hypertension",
+          "Dyslipidemia",
+          "Osteoporosis"
+        ],
+        "medications": [
+          {"name": "Methotrexate", "dose": "20mg", "frequency": "Weekly (oral)"},
+          {"name": "Folic Acid", "dose": "1mg", "frequency": "Daily"},
+          {"name": "Adalimumab", "dose": "40mg", "frequency": "Every 2 weeks (subcutaneous)"},
+          {"name": "Prednisone", "dose": "5mg", "frequency": "Daily"},
+          {"name": "Lisinopril", "dose": "10mg", "frequency": "Daily"},
+          {"name": "Atorvastatin", "dose": "20mg", "frequency": "Daily"},
+          {"name": "Alendronate", "dose": "70mg", "frequency": "Weekly"},
+          {"name": "Calcium/Vitamin D", "dose": "600mg/400IU", "frequency": "BID"}
+        ],
+        "allergies": ["Sulfa drugs - anaphylaxis"],
+        "vitals": {
+          "blood_pressure": "126/78 mmHg",
+          "heart_rate": "74 bpm",
+          "temperature": "98.6 F",
+          "weight": "178 lbs"
+        },
+        "physical_exam": {
+          "general": "Well-appearing, mild discomfort with movement",
+          "musculoskeletal": {
+            "hands": "Bilateral MCP and PIP joint tenderness (2-5 bilaterally), mild synovitis MCP 2-3 bilaterally, no deformities",
+            "wrists": "Bilateral tenderness, mild limitation of extension, no synovitis",
+            "elbows": "Non-tender, full ROM",
+            "shoulders": "Non-tender, full ROM",
+            "knees": "Non-tender, no effusion",
+            "feet": "MTP tenderness bilaterally"
+          },
+          "skin": "No nodules, no rash"
+        },
+        "labs": {
+          "date": "2024-01-21",
+          "results": [
+            {"test": "ESR", "value": "38", "unit": "mm/hr", "reference": "<20", "prior": "18"},
+            {"test": "CRP", "value": "2.4", "unit": "mg/dL", "reference": "<0.5", "prior": "0.4"},
+            {"test": "RF", "value": "156", "unit": "IU/mL", "reference": "<14"},
+            {"test": "Anti-CCP", "value": ">250", "unit": "U/mL", "reference": "<20"},
+            {"test": "CBC", "value": "WNL", "unit": "", "reference": ""},
+            {"test": "CMP", "value": "WNL", "unit": "", "reference": ""},
+            {"test": "LFTs", "value": "WNL", "unit": "", "reference": ""}
+          ]
+        },
+        "disease_activity": {
+          "das28_crp": "4.2 (moderate disease activity)",
+          "cdai": "18 (moderate disease activity)",
+          "patient_global_assessment": "6/10",
+          "physician_global_assessment": "5/10",
+          "tender_joint_count_28": "8",
+          "swollen_joint_count_28": "4"
+        },
+        "assessment": [
+          {"diagnosis": "Rheumatoid arthritis with flare", "icd10": "M05.79", "status": "Moderate disease activity"},
+          {"diagnosis": "Osteoporosis, glucocorticoid-induced", "icd10": "M81.8", "status": "Stable on therapy"}
+        ],
+        "plan": [
+          "Disease flare - increase Prednisone to 10mg daily x 2 weeks, then taper to 5mg",
+          "Consider adding Hydroxychloroquine 200mg BID if no improvement",
+          "Continue Methotrexate 20mg weekly and Adalimumab every 2 weeks",
+          "If inadequate response in 4 weeks, will consider switching biologic",
+          "Order hand/wrist X-rays to assess for erosive changes",
+          "Repeat labs (CBC, CMP, ESR, CRP) in 4 weeks",
+          "Physical therapy referral for hand exercises",
+          "Follow-up in 4 weeks, sooner if worsening"
+        ]
+      },
+      "signature": {
+        "signed_by": "Dr. Catherine Wu, MD",
+        "signed_date": "2024-01-23T11:30:00Z",
+        "credentials": "MD, Board Certified Rheumatology"
+      }
+    }
+  ]
+}

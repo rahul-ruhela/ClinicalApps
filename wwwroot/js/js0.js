@@ -18,11 +18,14 @@ function closeModal() {
 }
 
 // Close modal when clicking outside
-document.getElementById('userModal').addEventListener('click', function (e) {
-    if (e.target === this) {
-        closeModal();
-    }
-});
+const _userModalEl = document.getElementById('userModal');
+if (_userModalEl) {
+    _userModalEl.addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+}
 
 // Close modal on Escape key
 document.addEventListener('keydown', function (e) {
@@ -59,7 +62,7 @@ async function submitForm(event) {
     submitBtn.textContent = 'Please wait...';
 
     try {
-        const response = await fetch('http://160.153.183.27:5000/api/track-user', {
+        const response = await fetch('http://localhost:5002/api/track-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -106,12 +109,14 @@ const languageNames = {
     'ar': 'Arabic'
 };
 
-// Load patients on page load
-document.addEventListener('DOMContentLoaded', loadPatients);
+// Load patients on page load (only on Demo page)
+if (document.getElementById('patientList')) {
+    document.addEventListener('DOMContentLoaded', loadPatients);
+}
 
 async function loadPatients() {
     try {
-        const response = await fetch('http://160.153.183.27:5000/api/discharge/patients');
+        const response = await fetch('http://localhost:5002/api/discharge/patients');
         const data = await response.json();
 
         const patientList = document.getElementById('patientList');
@@ -151,7 +156,8 @@ function selectPatient(name, element) {
 // Search functionality
 
 // Generate discharge summary
-document.getElementById('generateBtn').addEventListener('click', async function () {
+const _generateBtn = document.getElementById('generateBtn');
+if (_generateBtn) _generateBtn.addEventListener('click', async function () {
     if (!selectedPatient) return;
 
     const selectedLanguage = document.getElementById('languageSelect').value;
@@ -168,7 +174,7 @@ document.getElementById('generateBtn').addEventListener('click', async function 
     loadingOverlay.classList.add('active');
 
     try {
-        const response = await fetch('http://160.153.183.27:5000/api/discharge/generate', {
+        const response = await fetch('http://localhost:5002/api/discharge/generate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -452,7 +458,7 @@ async function simplifySummary() {
     loadingOverlay.classList.add('active');
 
     try {
-        const response = await fetch('http://160.153.183.27:5000/api/discharge/simplify', {
+        const response = await fetch('http://localhost:5002/api/discharge/simplify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -551,11 +557,14 @@ function useSimplifiedSummary() {
 }
 
 // Close modal when clicking outside
-document.getElementById('simplifyModal').addEventListener('click', function (e) {
-    if (e.target === this) {
-        closeSimplifyModal();
-    }
-});
+const _simplifyModalEl = document.getElementById('simplifyModal');
+if (_simplifyModalEl) {
+    _simplifyModalEl.addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeSimplifyModal();
+        }
+    });
+}
 
 // Close modal with Escape key
 document.addEventListener('keydown', function (e) {
@@ -570,7 +579,7 @@ let userData = [];
 
 async function loadUserData() {
     try {
-        const response = await fetch('http://160.153.183.27:5000/api/tracked-users');
+        const response = await fetch('http://localhost:5002/api/tracked-users');
         const data = await response.json();
         userData = data.users || [];
         renderData();
@@ -690,7 +699,7 @@ async function deleteUser(index) {
     if (!confirm('Are you sure you want to delete this visitor record?')) return;
 
     try {
-        const response = await fetch('http://160.153.183.27:5000/api/tracked-users/' + index, {
+        const response = await fetch('http://localhost:5002/api/tracked-users/' + index, {
             method: 'DELETE'
         });
         if (response.ok) {
@@ -705,7 +714,7 @@ async function clearAllData() {
     if (!confirm('Are you sure you want to delete ALL visitor records? This cannot be undone.')) return;
 
     try {
-        const response = await fetch('http://160.153.183.27:5000/api/tracked-users/clear', {
+        const response = await fetch('http://localhost:5002/api/tracked-users/clear', {
             method: 'DELETE'
         });
         if (response.ok) {

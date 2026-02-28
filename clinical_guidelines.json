@@ -1,0 +1,1062 @@
+{
+  "clinical_guidelines": [
+    {
+      "guideline_id": "CG-001",
+      "title": "Type 2 Diabetes Mellitus Management",
+      "category": "Endocrinology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "American Diabetes Association (ADA)",
+      "sections": {
+        "diagnosis": {
+          "criteria": [
+            "Fasting plasma glucose >= 126 mg/dL (7.0 mmol/L)",
+            "2-hour plasma glucose >= 200 mg/dL during 75g OGTT",
+            "HbA1c >= 6.5% (48 mmol/mol)",
+            "Random plasma glucose >= 200 mg/dL with classic hyperglycemic symptoms"
+          ],
+          "confirmation": "Diagnosis requires two abnormal test results from the same sample or two separate samples, unless unequivocal hyperglycemia is present"
+        },
+        "treatment_goals": {
+          "glycemic_targets": {
+            "hba1c": {
+              "general": "<7.0%",
+              "stringent": "<6.5% (if achievable without significant hypoglycemia)",
+              "less_stringent": "<8.0% (elderly, limited life expectancy, extensive comorbidities)"
+            },
+            "preprandial_glucose": "80-130 mg/dL",
+            "postprandial_glucose": "<180 mg/dL (1-2 hours after meal)",
+            "time_in_range": ">70% between 70-180 mg/dL"
+          },
+          "cardiovascular_targets": {
+            "blood_pressure": "<130/80 mmHg",
+            "ldl_cholesterol": "<100 mg/dL (or <70 mg/dL if ASCVD present)",
+            "triglycerides": "<150 mg/dL"
+          }
+        },
+        "pharmacotherapy": {
+          "first_line": {
+            "agent": "Metformin",
+            "starting_dose": "500mg once daily with meals",
+            "titration": "Increase by 500mg weekly as tolerated",
+            "maximum_dose": "2000-2550mg daily in divided doses",
+            "contraindications": [
+              "eGFR <30 mL/min/1.73m2",
+              "Acute kidney injury",
+              "Hepatic impairment",
+              "Conditions predisposing to lactic acidosis"
+            ],
+            "hold_for": "Iodinated contrast procedures, major surgery"
+          },
+          "second_line_agents": [
+            {
+              "class": "SGLT2 Inhibitors",
+              "examples": ["Empagliflozin", "Dapagliflozin", "Canagliflozin"],
+              "preferred_if": ["Heart failure", "Chronic kidney disease", "ASCVD"],
+              "benefits": ["CV mortality reduction", "Renal protection", "Weight loss"],
+              "cautions": ["DKA risk", "Genital mycotic infections", "Volume depletion"]
+            },
+            {
+              "class": "GLP-1 Receptor Agonists",
+              "examples": ["Semaglutide", "Liraglutide", "Dulaglutide"],
+              "preferred_if": ["Obesity", "High ASCVD risk", "Need for weight loss"],
+              "benefits": ["CV benefit", "Significant weight loss", "Low hypoglycemia risk"],
+              "cautions": ["GI side effects", "Pancreatitis risk", "Medullary thyroid cancer (contraindicated)"]
+            },
+            {
+              "class": "DPP-4 Inhibitors",
+              "examples": ["Sitagliptin", "Linagliptin", "Saxagliptin"],
+              "preferred_if": ["Cost concerns", "Oral preference", "Renal impairment (linagliptin)"],
+              "benefits": ["Weight neutral", "Well tolerated", "Low hypoglycemia risk"],
+              "cautions": ["Heart failure risk (saxagliptin)", "Joint pain"]
+            },
+            {
+              "class": "Sulfonylureas",
+              "examples": ["Glimepiride", "Glipizide", "Glyburide"],
+              "preferred_if": ["Cost is primary concern", "Rapid glucose lowering needed"],
+              "benefits": ["Low cost", "Effective glucose lowering"],
+              "cautions": ["Hypoglycemia risk", "Weight gain", "CV safety concerns"]
+            }
+          ],
+          "insulin_therapy": {
+            "indications": [
+              "HbA1c >10% or glucose >300 mg/dL with symptoms",
+              "Type 1 diabetes",
+              "Failure of oral agents",
+              "Pregnancy",
+              "Hospitalized patients"
+            ],
+            "starting_regimen": {
+              "basal_insulin": {
+                "agents": ["Glargine", "Detemir", "Degludec"],
+                "starting_dose": "10 units or 0.1-0.2 units/kg at bedtime",
+                "titration": "Increase by 2 units every 3 days until fasting glucose at goal"
+              }
+            }
+          }
+        },
+        "monitoring": {
+          "hba1c": "Every 3 months until at goal, then every 6 months",
+          "self_monitoring": "Frequency based on regimen (more frequent with insulin)",
+          "cgm": "Consider for patients on multiple daily injections or insulin pump",
+          "renal_function": "eGFR and urine albumin-creatinine ratio annually",
+          "lipids": "Annually or more frequently if on therapy",
+          "eye_exam": "Annual dilated fundoscopic exam",
+          "foot_exam": "Comprehensive exam annually, visual inspection every visit"
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-002",
+      "title": "Hypertension Management",
+      "category": "Cardiology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "ACC/AHA Hypertension Guidelines",
+      "sections": {
+        "classification": {
+          "categories": [
+            {"category": "Normal", "systolic": "<120", "diastolic": "<80"},
+            {"category": "Elevated", "systolic": "120-129", "diastolic": "<80"},
+            {"category": "Stage 1 Hypertension", "systolic": "130-139", "diastolic": "80-89"},
+            {"category": "Stage 2 Hypertension", "systolic": ">=140", "diastolic": ">=90"},
+            {"category": "Hypertensive Crisis", "systolic": ">180", "diastolic": ">120"}
+          ]
+        },
+        "initial_evaluation": {
+          "confirm_diagnosis": "Average of 2+ readings on 2+ occasions",
+          "out_of_office_bp": "Ambulatory or home BP monitoring recommended",
+          "secondary_causes_workup": [
+            "Primary aldosteronism (if resistant HTN, hypokalemia)",
+            "Renal artery stenosis (if abdominal bruit, resistant HTN)",
+            "Pheochromocytoma (if episodic symptoms)",
+            "Cushing syndrome (if clinical features present)",
+            "Thyroid disease",
+            "Obstructive sleep apnea"
+          ],
+          "baseline_labs": [
+            "Complete metabolic panel",
+            "Lipid panel",
+            "Thyroid function",
+            "Urinalysis",
+            "ECG"
+          ],
+          "ascvd_risk": "Calculate 10-year ASCVD risk using Pooled Cohort Equations"
+        },
+        "treatment_thresholds": {
+          "with_ascvd_or_high_risk": "BP >= 130/80 mmHg",
+          "without_ascvd_low_risk": "BP >= 140/90 mmHg",
+          "with_diabetes": "BP >= 130/80 mmHg",
+          "with_ckd": "BP >= 130/80 mmHg"
+        },
+        "treatment_goals": {
+          "general": "<130/80 mmHg for most adults",
+          "elderly_frail": "Consider <140/90 mmHg based on tolerability"
+        },
+        "lifestyle_modifications": {
+          "dietary_approaches": {
+            "dash_diet": "Rich in fruits, vegetables, whole grains, low-fat dairy",
+            "sodium_restriction": "<2300 mg/day, ideally <1500 mg/day",
+            "potassium_intake": "3500-5000 mg/day from dietary sources"
+          },
+          "physical_activity": "150 min/week moderate or 75 min/week vigorous aerobic",
+          "weight_management": "Maintain BMI 18.5-24.9 kg/m2",
+          "alcohol_moderation": "<=2 drinks/day men, <=1 drink/day women",
+          "smoking_cessation": "Complete cessation"
+        },
+        "pharmacotherapy": {
+          "first_line_agents": [
+            {
+              "class": "ACE Inhibitors",
+              "examples": ["Lisinopril", "Enalapril", "Ramipril"],
+              "preferred_for": ["Diabetes", "CKD with proteinuria", "Heart failure", "Post-MI"],
+              "contraindications": ["Pregnancy", "Angioedema history", "Bilateral RAS"]
+            },
+            {
+              "class": "ARBs",
+              "examples": ["Losartan", "Valsartan", "Olmesartan"],
+              "preferred_for": ["ACE inhibitor intolerance (cough)", "Same indications as ACEi"],
+              "contraindications": ["Pregnancy", "Bilateral RAS"]
+            },
+            {
+              "class": "Calcium Channel Blockers",
+              "examples": ["Amlodipine", "Nifedipine ER", "Diltiazem"],
+              "preferred_for": ["Elderly", "African American patients", "Angina"],
+              "cautions": ["Non-dihydropyridines in HFrEF", "Peripheral edema"]
+            },
+            {
+              "class": "Thiazide Diuretics",
+              "examples": ["Chlorthalidone", "Hydrochlorothiazide", "Indapamide"],
+              "preferred_for": ["Volume overload", "African American patients", "Osteoporosis"],
+              "cautions": ["Electrolyte abnormalities", "Gout"]
+            }
+          ],
+          "combination_therapy": {
+            "indication": "BP >20/10 mmHg above goal",
+            "preferred_combinations": [
+              "ACEi/ARB + CCB",
+              "ACEi/ARB + Thiazide",
+              "CCB + Thiazide"
+            ],
+            "avoid": "ACEi + ARB combination"
+          },
+          "resistant_hypertension": {
+            "definition": "BP above goal despite 3 drugs including diuretic at optimal doses",
+            "fourth_agent": "Spironolactone 25-50mg daily",
+            "alternatives": ["Beta-blocker", "Alpha-blocker", "Clonidine", "Hydralazine"]
+          }
+        },
+        "follow_up": {
+          "after_initiation": "Within 1 month",
+          "stable_at_goal": "Every 3-6 months",
+          "monitoring": "Electrolytes, renal function 1-2 weeks after starting ACEi/ARB/diuretic"
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-003",
+      "title": "Heart Failure Management",
+      "category": "Cardiology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "ACC/AHA/HFSA Heart Failure Guidelines",
+      "sections": {
+        "classification": {
+          "by_ejection_fraction": [
+            {"type": "HFrEF", "ef": "<=40%", "description": "Heart Failure with Reduced Ejection Fraction"},
+            {"type": "HFmrEF", "ef": "41-49%", "description": "Heart Failure with Mildly Reduced EF"},
+            {"type": "HFpEF", "ef": ">=50%", "description": "Heart Failure with Preserved EF"},
+            {"type": "HFimpEF", "ef": ">40% (improved)", "description": "Heart Failure with Improved EF"}
+          ],
+          "nyha_functional_class": [
+            {"class": "I", "description": "No limitation of physical activity"},
+            {"class": "II", "description": "Slight limitation; comfortable at rest, symptoms with ordinary activity"},
+            {"class": "III", "description": "Marked limitation; symptoms with less than ordinary activity"},
+            {"class": "IV", "description": "Unable to carry out any physical activity without symptoms"}
+          ]
+        },
+        "diagnosis": {
+          "clinical_features": {
+            "symptoms": ["Dyspnea", "Orthopnea", "PND", "Fatigue", "Exercise intolerance"],
+            "signs": ["Elevated JVP", "S3 gallop", "Pulmonary rales", "Peripheral edema", "Hepatomegaly"]
+          },
+          "diagnostic_tests": {
+            "required": [
+              "Transthoracic echocardiogram",
+              "BNP or NT-proBNP",
+              "CBC, CMP, TSH",
+              "12-lead ECG",
+              "Chest X-ray"
+            ],
+            "consider": [
+              "Cardiac MRI",
+              "Coronary angiography",
+              "Right heart catheterization",
+              "Cardiopulmonary exercise testing"
+            ]
+          },
+          "biomarkers": {
+            "bnp": {"rule_out": "<100 pg/mL", "gray_zone": "100-400 pg/mL", "probable_hf": ">400 pg/mL"},
+            "nt_probnp": {"rule_out": "<300 pg/mL", "age_adjusted": "Yes - higher thresholds for elderly"}
+          }
+        },
+        "treatment_hfref": {
+          "gdmt_foundation": {
+            "pillars": [
+              {
+                "class": "ACEi/ARB/ARNI",
+                "preferred": "ARNI (Sacubitril/Valsartan) if tolerating ACEi/ARB",
+                "target_dose": "Sacubitril/Valsartan 97/103mg BID",
+                "note": "ARNI reduces mortality vs ACEi"
+              },
+              {
+                "class": "Beta-Blocker",
+                "agents": ["Carvedilol", "Metoprolol succinate", "Bisoprolol"],
+                "target_doses": {
+                  "carvedilol": "25mg BID (50mg BID if >85kg)",
+                  "metoprolol_succinate": "200mg daily",
+                  "bisoprolol": "10mg daily"
+                },
+                "note": "Titrate slowly every 2 weeks"
+              },
+              {
+                "class": "MRA",
+                "agents": ["Spironolactone", "Eplerenone"],
+                "target_dose": "Spironolactone 25-50mg daily",
+                "contraindications": ["K+ >5.0", "eGFR <30"]
+              },
+              {
+                "class": "SGLT2 Inhibitor",
+                "agents": ["Dapagliflozin", "Empagliflozin"],
+                "dose": "10mg daily",
+                "note": "Benefit regardless of diabetes status"
+              }
+            ]
+          },
+          "diuretics": {
+            "indication": "Volume overload/congestion",
+            "agents": {
+              "loop": ["Furosemide", "Bumetanide", "Torsemide"],
+              "thiazide": "Add for diuretic resistance"
+            },
+            "monitoring": "Daily weights, electrolytes, renal function"
+          },
+          "additional_therapies": {
+            "hydralazine_isdn": "For African American patients or ACEi/ARB intolerant",
+            "ivabradine": "If HR >70 despite max beta-blocker, sinus rhythm",
+            "digoxin": "Consider for symptom control, not mortality benefit"
+          },
+          "device_therapy": {
+            "icd": {
+              "primary_prevention": "EF <=35%, NYHA II-III, on GDMT >=3 months, life expectancy >1 year",
+              "secondary_prevention": "Survivors of VF arrest, hemodynamically significant VT"
+            },
+            "crt": {
+              "indication": "EF <=35%, LBBB with QRS >=150ms, NYHA II-IV, sinus rhythm"
+            }
+          }
+        },
+        "treatment_hfpef": {
+          "approach": "Address underlying conditions and symptoms",
+          "therapies": {
+            "sglt2_inhibitors": "Dapagliflozin/Empagliflozin - proven benefit in HFpEF",
+            "diuretics": "For volume management",
+            "blood_pressure_control": "Important for symptom management",
+            "atrial_fibrillation": "Rate/rhythm control",
+            "coronary_disease": "Revascularization if ischemia present"
+          }
+        },
+        "monitoring": {
+          "clinical": "Weight, symptoms, functional status",
+          "labs": "Electrolytes, renal function every 1-2 weeks during titration",
+          "biomarkers": "NT-proBNP trends for prognosis",
+          "echo": "Repeat if clinical change or to assess response to therapy"
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-004",
+      "title": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "category": "Pulmonology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "GOLD Guidelines",
+      "sections": {
+        "diagnosis": {
+          "spirometry": {
+            "required": "Post-bronchodilator FEV1/FVC <0.70 confirms airflow limitation",
+            "severity_classification": [
+              {"gold_stage": 1, "severity": "Mild", "fev1": ">=80% predicted"},
+              {"gold_stage": 2, "severity": "Moderate", "fev1": "50-79% predicted"},
+              {"gold_stage": 3, "severity": "Severe", "fev1": "30-49% predicted"},
+              {"gold_stage": 4, "severity": "Very Severe", "fev1": "<30% predicted"}
+            ]
+          },
+          "assessment": {
+            "symptoms": "Use CAT or mMRC questionnaire",
+            "exacerbation_history": "Number of moderate/severe exacerbations in past year",
+            "abcd_groups": [
+              {"group": "A", "symptoms": "Low", "exacerbations": "0-1 moderate"},
+              {"group": "B", "symptoms": "High", "exacerbations": "0-1 moderate"},
+              {"group": "C", "symptoms": "Low", "exacerbations": ">=2 moderate or >=1 hospitalization"},
+              {"group": "D", "symptoms": "High", "exacerbations": ">=2 moderate or >=1 hospitalization"}
+            ]
+          }
+        },
+        "pharmacotherapy": {
+          "bronchodilators": {
+            "lama": {
+              "agents": ["Tiotropium", "Umeclidinium", "Glycopyrrolate"],
+              "mechanism": "Long-acting muscarinic antagonist",
+              "dosing": "Once or twice daily inhalation"
+            },
+            "laba": {
+              "agents": ["Salmeterol", "Formoterol", "Indacaterol", "Vilanterol"],
+              "mechanism": "Long-acting beta-2 agonist",
+              "dosing": "Once or twice daily inhalation"
+            },
+            "saba": {
+              "agents": ["Albuterol", "Levalbuterol"],
+              "use": "Rescue therapy"
+            }
+          },
+          "inhaled_corticosteroids": {
+            "agents": ["Fluticasone", "Budesonide", "Beclomethasone"],
+            "indication": "Add to LABA/LAMA if frequent exacerbations, eosinophils >=300",
+            "caution": "Increased pneumonia risk"
+          },
+          "treatment_by_group": {
+            "group_a": "SABA or SAMA PRN, consider LAMA or LABA",
+            "group_b": "LAMA + LABA",
+            "group_c": "LAMA (consider LAMA + LABA if persistent symptoms)",
+            "group_d": "LAMA + LABA (add ICS if eosinophils >=300 and exacerbations)"
+          },
+          "additional_therapies": {
+            "pde4_inhibitor": {
+              "agent": "Roflumilast",
+              "indication": "Chronic bronchitis, FEV1 <50%, frequent exacerbations despite triple therapy"
+            },
+            "macrolide": {
+              "agent": "Azithromycin 250mg daily or 500mg 3x/week",
+              "indication": "Former smokers with continued exacerbations despite optimal therapy"
+            }
+          }
+        },
+        "non_pharmacologic": {
+          "smoking_cessation": "Most important intervention - pharmacotherapy + counseling",
+          "pulmonary_rehabilitation": "Recommended for symptomatic patients, especially post-exacerbation",
+          "oxygen_therapy": {
+            "indication": "Resting PaO2 <=55 mmHg or SpO2 <=88%",
+            "goal": "Maintain SpO2 >=90%"
+          },
+          "vaccinations": {
+            "influenza": "Annual",
+            "pneumococcal": "PCV20 or PCV15 + PPSV23",
+            "covid19": "Per current recommendations",
+            "rsv": "For adults >=60 years"
+          }
+        },
+        "exacerbation_management": {
+          "definition": "Acute worsening of respiratory symptoms requiring additional therapy",
+          "treatment": {
+            "bronchodilators": "Increase frequency of SABA, consider nebulizer",
+            "systemic_corticosteroids": "Prednisone 40mg x 5 days",
+            "antibiotics": "If increased dyspnea, sputum volume, and sputum purulence"
+          },
+          "hospitalization_criteria": [
+            "Severe symptoms",
+            "Acute respiratory failure",
+            "New physical signs (cyanosis, peripheral edema)",
+            "Failure to respond to initial treatment",
+            "Serious comorbidities",
+            "Insufficient home support"
+          ]
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-005",
+      "title": "Acute Coronary Syndrome Management",
+      "category": "Cardiology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "ACC/AHA Guidelines",
+      "sections": {
+        "classification": {
+          "types": [
+            {
+              "type": "STEMI",
+              "definition": "ST-elevation MI",
+              "ecg": "ST elevation >=1mm in 2+ contiguous leads or new LBBB",
+              "treatment": "Emergent reperfusion"
+            },
+            {
+              "type": "NSTEMI",
+              "definition": "Non-ST-elevation MI",
+              "ecg": "ST depression, T-wave inversion, or non-specific changes",
+              "troponin": "Elevated with rise/fall pattern"
+            },
+            {
+              "type": "Unstable Angina",
+              "definition": "ACS without biomarker elevation",
+              "ecg": "May show ischemic changes",
+              "troponin": "Normal"
+            }
+          ]
+        },
+        "initial_management": {
+          "mona": {
+            "morphine": "2-4mg IV PRN if pain not relieved by nitrates (use with caution)",
+            "oxygen": "If SpO2 <90%",
+            "nitrates": "SL NTG 0.4mg q5min x3, then IV if ongoing ischemia",
+            "aspirin": "162-325mg chewed immediately (non-enteric coated)"
+          },
+          "antiplatelet": {
+            "p2y12_inhibitors": [
+              {"agent": "Ticagrelor", "load": "180mg", "maintenance": "90mg BID", "preferred": "For most ACS"},
+              {"agent": "Prasugrel", "load": "60mg", "maintenance": "10mg daily", "note": "Avoid if prior stroke/TIA"},
+              {"agent": "Clopidogrel", "load": "300-600mg", "maintenance": "75mg daily", "use": "If others contraindicated"}
+            ]
+          },
+          "anticoagulation": {
+            "options": [
+              {"agent": "Unfractionated Heparin", "dosing": "60 U/kg bolus, 12 U/kg/hr infusion"},
+              {"agent": "Enoxaparin", "dosing": "1 mg/kg SC q12h (0.75 mg/kg if >=75 yo)"},
+              {"agent": "Bivalirudin", "use": "Alternative for PCI"},
+              {"agent": "Fondaparinux", "dosing": "2.5mg SC daily", "note": "Avoid as sole anticoagulant for PCI"}
+            ]
+          }
+        },
+        "stemi_management": {
+          "reperfusion_strategy": {
+            "primary_pci": {
+              "preferred": "If available within 120 minutes of first medical contact",
+              "door_to_balloon": "Goal <90 minutes"
+            },
+            "fibrinolysis": {
+              "indication": "If PCI not available within 120 minutes",
+              "door_to_needle": "Goal <30 minutes",
+              "agents": ["Tenecteplase", "Alteplase", "Reteplase"],
+              "contraindications": [
+                "Prior intracranial hemorrhage",
+                "Ischemic stroke within 3 months",
+                "Active bleeding",
+                "Suspected aortic dissection",
+                "Significant closed head trauma within 3 months"
+              ]
+            }
+          }
+        },
+        "nste_acs_management": {
+          "risk_stratification": {
+            "tools": ["TIMI Risk Score", "GRACE Score"],
+            "high_risk_features": [
+              "Recurrent/ongoing ischemia",
+              "Hemodynamic instability",
+              "Heart failure",
+              "Sustained VT/VF",
+              "Elevated troponin",
+              "Dynamic ECG changes"
+            ]
+          },
+          "invasive_strategy": {
+            "immediate": "<2 hours if refractory angina, hemodynamic/electrical instability",
+            "early": "<24 hours if high-risk features",
+            "delayed": "25-72 hours for intermediate risk",
+            "conservative": "Consider for low-risk, patient preference"
+          }
+        },
+        "secondary_prevention": {
+          "medications": {
+            "dual_antiplatelet": "Aspirin + P2Y12 inhibitor for 12 months",
+            "high_intensity_statin": "Atorvastatin 80mg or Rosuvastatin 40mg",
+            "beta_blocker": "For all post-MI patients, especially if EF reduced",
+            "ace_inhibitor_arb": "For anterior MI, HF, EF <40%, diabetes, HTN",
+            "mra": "If EF <=40% and HF or diabetes",
+            "colchicine": "Consider 0.5mg daily for secondary prevention"
+          },
+          "lifestyle": {
+            "smoking_cessation": "Mandatory",
+            "cardiac_rehabilitation": "Strongly recommended",
+            "diet": "Mediterranean or heart-healthy",
+            "exercise": "30 min moderate activity most days"
+          }
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-006",
+      "title": "Anticoagulation for Atrial Fibrillation",
+      "category": "Cardiology/Hematology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "ACC/AHA/HRS Atrial Fibrillation Guidelines",
+      "sections": {
+        "stroke_risk_assessment": {
+          "cha2ds2_vasc": {
+            "components": [
+              {"factor": "Congestive heart failure", "points": 1},
+              {"factor": "Hypertension", "points": 1},
+              {"factor": "Age >=75 years", "points": 2},
+              {"factor": "Diabetes mellitus", "points": 1},
+              {"factor": "Stroke/TIA/thromboembolism", "points": 2},
+              {"factor": "Vascular disease", "points": 1},
+              {"factor": "Age 65-74 years", "points": 1},
+              {"factor": "Sex category (female)", "points": 1}
+            ],
+            "recommendations": {
+              "score_0_male": "No anticoagulation recommended",
+              "score_1_male": "Consider anticoagulation",
+              "score_2_plus": "Anticoagulation recommended"
+            }
+          }
+        },
+        "bleeding_risk_assessment": {
+          "has_bled": {
+            "components": [
+              {"factor": "Hypertension (uncontrolled, >160 systolic)", "points": 1},
+              {"factor": "Abnormal renal/liver function", "points": "1-2"},
+              {"factor": "Stroke history", "points": 1},
+              {"factor": "Bleeding history or predisposition", "points": 1},
+              {"factor": "Labile INR (if on warfarin)", "points": 1},
+              {"factor": "Elderly (>65 years)", "points": 1},
+              {"factor": "Drugs (antiplatelet, NSAIDs) or alcohol", "points": "1-2"}
+            ],
+            "interpretation": "High bleeding risk (>=3) should prompt more frequent monitoring, not necessarily avoidance of anticoagulation"
+          }
+        },
+        "anticoagulant_options": {
+          "doacs_preferred": {
+            "agents": [
+              {
+                "name": "Apixaban",
+                "standard_dose": "5mg BID",
+                "reduced_dose": "2.5mg BID (if 2+ of: age >=80, weight <=60kg, Cr >=1.5)",
+                "renal_threshold": "Use with caution if CrCl <25 mL/min"
+              },
+              {
+                "name": "Rivaroxaban",
+                "standard_dose": "20mg daily with evening meal",
+                "reduced_dose": "15mg daily with evening meal (CrCl 15-50)",
+                "renal_threshold": "Avoid if CrCl <15 mL/min"
+              },
+              {
+                "name": "Dabigatran",
+                "standard_dose": "150mg BID",
+                "reduced_dose": "75mg BID (CrCl 15-30)",
+                "renal_threshold": "Avoid if CrCl <15 mL/min",
+                "note": "Has reversal agent (idarucizumab)"
+              },
+              {
+                "name": "Edoxaban",
+                "standard_dose": "60mg daily",
+                "reduced_dose": "30mg daily (CrCl 15-50, weight <=60kg, or P-gp inhibitor)",
+                "renal_threshold": "Avoid if CrCl >95 or <15 mL/min"
+              }
+            ]
+          },
+          "warfarin": {
+            "indication": "Mechanical heart valve, moderate-severe mitral stenosis, patient preference, cost",
+            "target_inr": "2.0-3.0 (2.5-3.5 for mechanical mitral valve)",
+            "ttr_goal": ">70% time in therapeutic range"
+          }
+        },
+        "special_situations": {
+          "cardioversion": {
+            "anticoagulation": "At least 3 weeks before if AF >48 hours or unknown duration",
+            "alternative": "TEE to exclude LAA thrombus, then proceed",
+            "post_cardioversion": "Continue anticoagulation >=4 weeks regardless of rhythm"
+          },
+          "ablation": {
+            "pre_procedure": "Uninterrupted anticoagulation preferred",
+            "post_procedure": "Continue anticoagulation >=2 months, long-term based on stroke risk"
+          },
+          "surgery": {
+            "doacs": "Hold 24-48 hours before (longer if high bleeding risk or reduced renal function)",
+            "warfarin": "Stop 5 days before, bridge with LMWH if high stroke risk",
+            "resumption": "When adequate hemostasis achieved"
+          }
+        },
+        "reversal_agents": {
+          "warfarin": ["Vitamin K", "4-factor PCC", "FFP"],
+          "dabigatran": "Idarucizumab (Praxbind)",
+          "factor_xa_inhibitors": "Andexanet alfa (Andexxa) for apixaban/rivaroxaban"
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-007",
+      "title": "Chronic Kidney Disease Management",
+      "category": "Nephrology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "KDIGO Guidelines",
+      "sections": {
+        "classification": {
+          "gfr_categories": [
+            {"stage": "G1", "gfr": ">=90", "description": "Normal or high"},
+            {"stage": "G2", "gfr": "60-89", "description": "Mildly decreased"},
+            {"stage": "G3a", "gfr": "45-59", "description": "Mildly to moderately decreased"},
+            {"stage": "G3b", "gfr": "30-44", "description": "Moderately to severely decreased"},
+            {"stage": "G4", "gfr": "15-29", "description": "Severely decreased"},
+            {"stage": "G5", "gfr": "<15", "description": "Kidney failure"}
+          ],
+          "albuminuria_categories": [
+            {"category": "A1", "acr": "<30 mg/g", "description": "Normal to mildly increased"},
+            {"category": "A2", "acr": "30-300 mg/g", "description": "Moderately increased"},
+            {"category": "A3", "acr": ">300 mg/g", "description": "Severely increased"}
+          ]
+        },
+        "blood_pressure_management": {
+          "target": "<120/80 mmHg if tolerated (using standardized measurement)",
+          "first_line": "ACE inhibitor or ARB, especially if albuminuria present",
+          "note": "Monitor potassium and creatinine 2-4 weeks after initiation or dose change"
+        },
+        "glycemic_management": {
+          "target_hba1c": "Individualized, generally <7% if diabetes present",
+          "sglt2_inhibitors": {
+            "recommendation": "Recommended for diabetic CKD if eGFR >=20",
+            "benefits": "Slow CKD progression, reduce cardiovascular events"
+          },
+          "glp1_ra": "Consider as second-line for additional CV and renal benefits",
+          "metformin": {
+            "egfr_30_45": "Reduce dose, monitor more frequently",
+            "egfr_below_30": "Discontinue"
+          }
+        },
+        "lipid_management": {
+          "statin": "Recommended for CKD G3-G5 not on dialysis",
+          "intensity": "Moderate to high intensity based on CV risk"
+        },
+        "anemia_management": {
+          "target_hemoglobin": "10-11.5 g/dL with ESA therapy",
+          "iron": {
+            "iv_iron": "Preferred in CKD G5D",
+            "targets": "TSAT >20%, ferritin >100 ng/mL (>200 in dialysis)"
+          },
+          "esa": {
+            "indication": "Hgb <10 g/dL after iron repletion",
+            "caution": "Avoid targeting Hgb >13 g/dL"
+          }
+        },
+        "mineral_bone_disorder": {
+          "phosphorus": {
+            "target": "Maintain toward normal range",
+            "binders": ["Sevelamer", "Lanthanum", "Calcium-based (limit use)"]
+          },
+          "pth": {
+            "target": "Varies by CKD stage, avoid extreme values",
+            "treatment": "Vitamin D analogs, calcimimetics (dialysis)"
+          },
+          "vitamin_d": "Check and supplement if deficient"
+        },
+        "dietary_recommendations": {
+          "protein": "0.8 g/kg/day for G3-G5 not on dialysis",
+          "sodium": "<2g/day",
+          "potassium": "Individualized based on serum levels",
+          "phosphorus": "Limit high-phosphorus foods if elevated"
+        },
+        "nephrology_referral": {
+          "indications": [
+            "eGFR <30 mL/min/1.73m2",
+            "Rapid decline (>5 mL/min/year)",
+            "ACR >300 mg/g",
+            "Difficult-to-control hypertension",
+            "Unexplained hematuria",
+            "Electrolyte abnormalities",
+            "Hereditary kidney disease"
+          ]
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-008",
+      "title": "Depression Screening and Treatment",
+      "category": "Psychiatry",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "APA/USPSTF Guidelines",
+      "sections": {
+        "screening": {
+          "recommendation": "Screen all adults for depression",
+          "tools": {
+            "phq2": {
+              "questions": [
+                "Little interest or pleasure in doing things",
+                "Feeling down, depressed, or hopeless"
+              ],
+              "scoring": "0-3 each, total >=3 warrants PHQ-9"
+            },
+            "phq9": {
+              "domains": [
+                "Anhedonia",
+                "Depressed mood",
+                "Sleep disturbance",
+                "Fatigue",
+                "Appetite changes",
+                "Guilt/worthlessness",
+                "Concentration difficulty",
+                "Psychomotor changes",
+                "Suicidal ideation"
+              ],
+              "severity": [
+                {"score": "0-4", "severity": "Minimal"},
+                {"score": "5-9", "severity": "Mild"},
+                {"score": "10-14", "severity": "Moderate"},
+                {"score": "15-19", "severity": "Moderately severe"},
+                {"score": "20-27", "severity": "Severe"}
+              ]
+            }
+          }
+        },
+        "diagnosis": {
+          "dsm5_criteria": {
+            "required": "5+ symptoms during same 2-week period, must include depressed mood OR anhedonia",
+            "symptoms": [
+              "Depressed mood most of the day",
+              "Markedly diminished interest/pleasure",
+              "Significant weight loss/gain or appetite change",
+              "Insomnia or hypersomnia",
+              "Psychomotor agitation or retardation",
+              "Fatigue or loss of energy",
+              "Feelings of worthlessness or excessive guilt",
+              "Diminished concentration or indecisiveness",
+              "Recurrent thoughts of death or suicidal ideation"
+            ],
+            "exclusions": ["Substance effects", "Medical condition", "Better explained by other disorder"]
+          }
+        },
+        "treatment": {
+          "mild_depression": {
+            "options": ["Watchful waiting with support", "Psychotherapy", "Consider medication"]
+          },
+          "moderate_severe": {
+            "first_line": "Antidepressant medication AND/OR psychotherapy",
+            "combination": "Often more effective than monotherapy"
+          },
+          "antidepressants": {
+            "first_line": {
+              "ssris": {
+                "agents": ["Sertraline", "Escitalopram", "Fluoxetine", "Citalopram", "Paroxetine"],
+                "characteristics": "Generally well-tolerated, once daily dosing"
+              },
+              "snris": {
+                "agents": ["Venlafaxine", "Duloxetine", "Desvenlafaxine"],
+                "characteristics": "May help with pain, fatigue"
+              }
+            },
+            "second_line": {
+              "bupropion": "Good for fatigue, smoking cessation, fewer sexual side effects",
+              "mirtazapine": "Good for insomnia, appetite stimulation",
+              "tricyclics": "Effective but more side effects, overdose risk"
+            },
+            "treatment_principles": [
+              "Start low, go slow",
+              "Allow 4-6 weeks for response",
+              "Titrate to therapeutic dose",
+              "Continue 6-12 months after remission for first episode",
+              "Consider maintenance for recurrent depression"
+            ]
+          },
+          "psychotherapy": {
+            "evidence_based": [
+              "Cognitive Behavioral Therapy (CBT)",
+              "Interpersonal Therapy (IPT)",
+              "Behavioral Activation",
+              "Problem-Solving Therapy"
+            ],
+            "duration": "Typically 12-16 sessions"
+          },
+          "severe_treatment_resistant": {
+            "options": [
+              "Medication augmentation (lithium, atypical antipsychotic)",
+              "Electroconvulsive therapy (ECT)",
+              "Transcranial magnetic stimulation (TMS)",
+              "Esketamine nasal spray",
+              "Intensive outpatient or inpatient treatment"
+            ]
+          }
+        },
+        "safety": {
+          "suicide_risk_assessment": "Required at initial evaluation and follow-ups",
+          "tools": ["Columbia Suicide Severity Rating Scale (C-SSRS)"],
+          "high_risk_management": [
+            "Safety planning",
+            "Lethal means counseling",
+            "Increased monitoring",
+            "Consider higher level of care"
+          ]
+        },
+        "follow_up": {
+          "initial": "Within 1-2 weeks of starting treatment",
+          "during_titration": "Every 2-4 weeks",
+          "stable": "Every 1-3 months"
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-009",
+      "title": "Venous Thromboembolism Prevention and Treatment",
+      "category": "Hematology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "CHEST/ASH Guidelines",
+      "sections": {
+        "risk_assessment": {
+          "hospitalized_medical": {
+            "tool": "Padua Prediction Score",
+            "high_risk": "Score >=4 warrants prophylaxis"
+          },
+          "surgical": {
+            "tool": "Caprini Score",
+            "risk_levels": [
+              {"score": "0", "risk": "Very low", "prophylaxis": "Early ambulation"},
+              {"score": "1-2", "risk": "Low", "prophylaxis": "Mechanical +/- pharmacologic"},
+              {"score": "3-4", "risk": "Moderate", "prophylaxis": "Pharmacologic + mechanical"},
+              {"score": ">=5", "risk": "High", "prophylaxis": "Pharmacologic + mechanical, extended"}
+            ]
+          }
+        },
+        "prophylaxis": {
+          "pharmacologic": {
+            "options": [
+              {"agent": "Enoxaparin", "dose": "40mg SC daily"},
+              {"agent": "Heparin", "dose": "5000 units SC q8-12h"},
+              {"agent": "Fondaparinux", "dose": "2.5mg SC daily"},
+              {"agent": "Rivaroxaban", "dose": "10mg daily (orthopedic)", "duration": "12-35 days post-op"}
+            ]
+          },
+          "mechanical": {
+            "options": ["Intermittent pneumatic compression", "Graduated compression stockings"],
+            "indication": "High bleeding risk or as adjunct to pharmacologic"
+          }
+        },
+        "diagnosis": {
+          "dvt": {
+            "clinical": "Wells score for DVT",
+            "testing": {
+              "d_dimer": "If low probability, negative D-dimer excludes DVT",
+              "ultrasound": "Compression ultrasound is diagnostic test of choice"
+            }
+          },
+          "pe": {
+            "clinical": "Wells score for PE or PERC rule",
+            "testing": {
+              "d_dimer": "If low probability and PERC negative, can exclude",
+              "ct_angiography": "First-line imaging for PE",
+              "vq_scan": "Alternative if CT contraindicated"
+            }
+          }
+        },
+        "treatment": {
+          "initial_anticoagulation": {
+            "doacs_preferred": {
+              "options": [
+                {"agent": "Rivaroxaban", "dose": "15mg BID x 21 days, then 20mg daily"},
+                {"agent": "Apixaban", "dose": "10mg BID x 7 days, then 5mg BID"},
+                {"agent": "Edoxaban", "dose": "60mg daily after 5-10 days parenteral"},
+                {"agent": "Dabigatran", "dose": "150mg BID after 5-10 days parenteral"}
+              ]
+            },
+            "parenteral": {
+              "indication": "Cancer-associated VTE, massive PE, renal impairment",
+              "options": ["LMWH", "Fondaparinux", "UFH"]
+            }
+          },
+          "duration": {
+            "provoked": {
+              "transient_risk": "3 months",
+              "examples": ["Surgery", "Immobilization", "Trauma"]
+            },
+            "unprovoked": {
+              "minimum": "3 months",
+              "extended": "Consider indefinite if low bleeding risk"
+            },
+            "cancer_associated": {
+              "duration": "Indefinite while cancer active or on treatment",
+              "agent": "LMWH or DOAC (rivaroxaban, edoxaban, apixaban)"
+            },
+            "recurrent_vte": "Indefinite anticoagulation"
+          },
+          "thrombolysis": {
+            "indication": "Massive PE with hemodynamic instability",
+            "agents": ["Alteplase 100mg IV over 2 hours"],
+            "catheter_directed": "Consider for intermediate-high risk PE"
+          },
+          "ivc_filter": {
+            "indication": "Contraindication to anticoagulation, failure of anticoagulation",
+            "note": "Retrievable filter preferred, remove when anticoagulation feasible"
+          }
+        }
+      }
+    },
+    {
+      "guideline_id": "CG-010",
+      "title": "Osteoporosis Screening and Treatment",
+      "category": "Endocrinology/Rheumatology",
+      "version": "2024.1",
+      "effective_date": "2024-01-01",
+      "source": "AACE/ACE/NOF Guidelines",
+      "sections": {
+        "screening": {
+          "who_to_screen": [
+            "All women >=65 years",
+            "All men >=70 years",
+            "Postmenopausal women <65 with risk factors",
+            "Men 50-69 with risk factors",
+            "Adults with fragility fracture",
+            "Adults on glucocorticoids"
+          ],
+          "modality": {
+            "dxa": {
+              "sites": "Lumbar spine and hip",
+              "reporting": "T-score (compared to young adult)",
+              "interpretation": [
+                {"t_score": ">= -1.0", "category": "Normal"},
+                {"t_score": "-1.0 to -2.5", "category": "Osteopenia (low bone mass)"},
+                {"t_score": "<= -2.5", "category": "Osteoporosis"},
+                {"t_score": "<= -2.5 with fracture", "category": "Severe osteoporosis"}
+              ]
+            },
+            "frax": {
+              "use": "Calculate 10-year fracture probability",
+              "treatment_threshold": ">=3% hip fracture or >=20% major osteoporotic fracture"
+            }
+          }
+        },
+        "secondary_causes": {
+          "workup": [
+            "CBC, CMP (calcium, renal function)",
+            "25-hydroxyvitamin D",
+            "TSH",
+            "Consider: PTH, celiac panel, 24-hour urine calcium, testosterone (men)"
+          ],
+          "common_causes": [
+            "Vitamin D deficiency",
+            "Hyperthyroidism",
+            "Hyperparathyroidism",
+            "Glucocorticoid use",
+            "Celiac disease",
+            "Hypogonadism"
+          ]
+        },
+        "treatment": {
+          "lifestyle": {
+            "calcium": "1000-1200 mg daily (diet + supplements)",
+            "vitamin_d": "800-1000 IU daily, maintain 25(OH)D >=30 ng/mL",
+            "exercise": "Weight-bearing and muscle-strengthening",
+            "fall_prevention": "Home safety, balance exercises, vision correction",
+            "smoking_cessation": "Important for bone health",
+            "alcohol": "Limit to <=3 drinks/day"
+          },
+          "pharmacotherapy": {
+            "indications": [
+              "T-score <= -2.5 at hip or spine",
+              "Hip or vertebral fracture",
+              "T-score -1.0 to -2.5 AND FRAX >=3% hip or >=20% major fracture"
+            ],
+            "first_line": {
+              "bisphosphonates": {
+                "oral": [
+                  {"agent": "Alendronate", "dose": "70mg weekly"},
+                  {"agent": "Risedronate", "dose": "35mg weekly or 150mg monthly"}
+                ],
+                "iv": [
+                  {"agent": "Zoledronic acid", "dose": "5mg IV annually"}
+                ],
+                "instructions": "Take with full glass of water, remain upright 30-60 min, take before first food",
+                "duration": "5 years oral, 3 years IV, then reassess"
+              }
+            },
+            "alternatives": {
+              "denosumab": {
+                "dose": "60mg SC every 6 months",
+                "indication": "Bisphosphonate intolerance, very high risk",
+                "note": "Do not stop abruptly - rebound vertebral fractures"
+              },
+              "anabolic_agents": {
+                "teriparatide": {
+                  "dose": "20mcg SC daily",
+                  "indication": "Very high fracture risk, glucocorticoid-induced",
+                  "duration": "Maximum 2 years",
+                  "contraindication": "Avoid if prior radiation to skeleton, bone metastases, Paget's"
+                },
+                "romosozumab": {
+                  "dose": "210mg SC monthly x 12 months",
+                  "indication": "Very high fracture risk",
+                  "warning": "Avoid if recent MI or stroke"
+                }
+              }
+            },
+            "sequence": "Anabolic therapy first if very high risk, then transition to antiresorptive"
+          }
+        },
+        "monitoring": {
+          "dxa": "Repeat every 1-2 years on therapy, longer intervals if stable",
+          "bone_turnover_markers": "Can assess response to therapy",
+          "labs": "Calcium, vitamin D, renal function periodically"
+        }
+      }
+    }
+  ]
+}

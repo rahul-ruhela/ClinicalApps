@@ -59,7 +59,7 @@
             submitBtn.textContent = 'Please wait...';
 
             try {
-                const response = await fetch('http://160.153.183.27:5000/api/track-user', {
+                const response = await fetch('http://localhost:5002/api/track-user', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
