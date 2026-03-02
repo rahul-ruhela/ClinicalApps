@@ -59,6 +59,20 @@ namespace ClinicalApps.Controllers
             return Json(result);
         }
 
+        [HttpDelete("/api/tracked-users/{index}")]
+        public async Task<IActionResult> DeleteTrackedUser(int index)
+        {
+            var result = await _python.DeleteTrackedUserAsync(index);
+            return Json(result);
+        }
+
+        [HttpDelete("/api/tracked-users/clear")]
+        public async Task<IActionResult> ClearTrackedUsers()
+        {
+            var result = await _python.ClearTrackedUsersAsync();
+            return Json(result);
+        }
+
         // ── Audit Logs ─────────────────────────────────────────────────────
 
         [HttpGet("/api/audit/logs")]

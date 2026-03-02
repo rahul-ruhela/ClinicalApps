@@ -62,7 +62,7 @@ async function submitForm(event) {
     submitBtn.textContent = 'Please wait...';
 
     try {
-        const response = await fetch('http://localhost:5002/api/track-user', {
+        const response = await fetch('/api/track-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -116,7 +116,7 @@ if (document.getElementById('patientList')) {
 
 async function loadPatients() {
     try {
-        const response = await fetch('http://localhost:5002/api/discharge/patients');
+        const response = await fetch('/api/discharge/patients');
         const data = await response.json();
 
         const patientList = document.getElementById('patientList');
@@ -174,7 +174,7 @@ if (_generateBtn) _generateBtn.addEventListener('click', async function () {
     loadingOverlay.classList.add('active');
 
     try {
-        const response = await fetch('http://localhost:5002/api/discharge/generate', {
+        const response = await fetch('/api/discharge/generate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -458,7 +458,7 @@ async function simplifySummary() {
     loadingOverlay.classList.add('active');
 
     try {
-        const response = await fetch('http://localhost:5002/api/discharge/simplify', {
+        const response = await fetch('/api/discharge/simplify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -579,7 +579,7 @@ let userData = [];
 
 async function loadUserData() {
     try {
-        const response = await fetch('http://localhost:5002/api/tracked-users');
+        const response = await fetch('/api/tracked-users');
         const data = await response.json();
         userData = data.users || [];
         renderData();
@@ -699,7 +699,7 @@ async function deleteUser(index) {
     if (!confirm('Are you sure you want to delete this visitor record?')) return;
 
     try {
-        const response = await fetch('http://localhost:5002/api/tracked-users/' + index, {
+        const response = await fetch('/api/tracked-users/' + index, {
             method: 'DELETE'
         });
         if (response.ok) {
@@ -714,7 +714,7 @@ async function clearAllData() {
     if (!confirm('Are you sure you want to delete ALL visitor records? This cannot be undone.')) return;
 
     try {
-        const response = await fetch('http://localhost:5002/api/tracked-users/clear', {
+        const response = await fetch('/api/tracked-users/clear', {
             method: 'DELETE'
         });
         if (response.ok) {

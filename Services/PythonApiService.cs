@@ -67,6 +67,22 @@ public class PythonApiService
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
+    // DELETE /api/tracked-users/{index}
+    public async Task<JsonElement> DeleteTrackedUserAsync(int index)
+    {
+        var response = await _http.DeleteAsync($"/api/tracked-users/{index}");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<JsonElement>();
+    }
+
+    // DELETE /api/tracked-users/clear
+    public async Task<JsonElement> ClearTrackedUsersAsync()
+    {
+        var response = await _http.DeleteAsync("/api/tracked-users/clear");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<JsonElement>();
+    }
+
     // GET /api/audit/logs
     public async Task<JsonElement> GetAuditLogsAsync(string? date = null, string? eventType = null, int limit = 100)
     {

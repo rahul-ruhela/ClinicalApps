@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', loadPatients);
 
 async function loadPatients() {
     try {
-        const response = await fetch('http://localhost:5002/api/discharge/patients');
+        const response = await fetch('/api/discharge/patients');
         const data = await response.json();
 
         const patientList = document.getElementById('patientList');
@@ -78,7 +78,7 @@ document.getElementById('generateBtn').addEventListener('click', async function 
     loadingOverlay.classList.add('active');
 
     try {
-        const response = await fetch('http://localhost:5002/api/discharge/generate', {
+        const response = await fetch('/api/discharge/generate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -362,7 +362,7 @@ async function simplifySummary() {
     loadingOverlay.classList.add('active');
 
     try {
-        const response = await fetch('http://localhost:5002/api/discharge/simplify', {
+        const response = await fetch('/api/discharge/simplify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
