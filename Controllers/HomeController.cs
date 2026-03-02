@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 using ClinicalApps.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,22 +26,46 @@ namespace ClinicalApps.Controllers
         [HttpGet("/api/discharge/patients")]
         public async Task<IActionResult> GetPatients()
         {
-            var result = await _python.GetPatientsAsync();
-            return Json(result);
+            try
+            {
+                var result = await _python.GetPatientsAsync();
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GetPatients failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         [HttpPost("/api/discharge/generate")]
         public async Task<IActionResult> GenerateDischarge([FromBody] GenerateRequest req)
         {
-            var result = await _python.GenerateDischargeAsync(req.PatientName, req.Language ?? "en");
-            return Json(result);
+            try
+            {
+                var result = await _python.GenerateDischargeAsync(req.PatientName, req.Language ?? "en");
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GenerateDischarge failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         [HttpPost("/api/discharge/simplify")]
         public async Task<IActionResult> SimplifyDischarge([FromBody] SimplifyRequest req)
         {
-            var result = await _python.SimplifyDischargeAsync(req.Summary, req.TargetGrade);
-            return Json(result);
+            try
+            {
+                var result = await _python.SimplifyDischargeAsync(req.Summary, req.TargetGrade);
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "SimplifyDischarge failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         // ── User Tracking ──────────────────────────────────────────────────
@@ -48,29 +73,61 @@ namespace ClinicalApps.Controllers
         [HttpPost("/api/track-user")]
         public async Task<IActionResult> TrackUser([FromBody] TrackUserRequest req)
         {
-            var result = await _python.TrackUserAsync(req.Name, req.Email, req.Page);
-            return Json(result);
+            try
+            {
+                var result = await _python.TrackUserAsync(req.Name, req.Email, req.Page);
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "TrackUser failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         [HttpGet("/api/tracked-users")]
         public async Task<IActionResult> GetTrackedUsers()
         {
-            var result = await _python.GetTrackedUsersAsync();
-            return Json(result);
+            try
+            {
+                var result = await _python.GetTrackedUsersAsync();
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GetTrackedUsers failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         [HttpDelete("/api/tracked-users/{index}")]
         public async Task<IActionResult> DeleteTrackedUser(int index)
         {
-            var result = await _python.DeleteTrackedUserAsync(index);
-            return Json(result);
+            try
+            {
+                var result = await _python.DeleteTrackedUserAsync(index);
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "DeleteTrackedUser failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         [HttpDelete("/api/tracked-users/clear")]
         public async Task<IActionResult> ClearTrackedUsers()
         {
-            var result = await _python.ClearTrackedUsersAsync();
-            return Json(result);
+            try
+            {
+                var result = await _python.ClearTrackedUsersAsync();
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "ClearTrackedUsers failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         // ── Audit Logs ─────────────────────────────────────────────────────
@@ -78,8 +135,16 @@ namespace ClinicalApps.Controllers
         [HttpGet("/api/audit/logs")]
         public async Task<IActionResult> GetAuditLogs(string? date, string? event_type, int limit = 100)
         {
-            var result = await _python.GetAuditLogsAsync(date, event_type, limit);
-            return Json(result);
+            try
+            {
+                var result = await _python.GetAuditLogsAsync(date, event_type, limit);
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GetAuditLogs failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         // ──────────────────────────────────────────────────────────────────
@@ -91,8 +156,14 @@ namespace ClinicalApps.Controllers
         }
     }
 
-    // Request models
-    public record GenerateRequest(string PatientName, string? Language);
-    public record SimplifyRequest(string Summary, int TargetGrade = 7);
+    // Request models — [JsonPropertyName] maps JS snake_case to C# PascalCase
+    public record GenerateRequest(
+        [property: JsonPropertyName("patient_name")] string PatientName,
+        string? Language);
+
+    public record SimplifyRequest(
+        string Summary,
+        [property: JsonPropertyName("target_grade")] int TargetGrade = 7);
+
     public record TrackUserRequest(string Name, string Email, string Page);
 }

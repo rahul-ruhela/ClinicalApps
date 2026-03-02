@@ -17,7 +17,6 @@ public class PythonApiService
     public async Task<JsonElement> GetPatientsAsync()
     {
         var response = await _http.GetAsync("/api/discharge/patients");
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
@@ -29,7 +28,6 @@ public class PythonApiService
             patient_name = patientName,
             language
         });
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
@@ -41,7 +39,6 @@ public class PythonApiService
             summary,
             target_grade = targetGrade
         });
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
@@ -55,7 +52,6 @@ public class PythonApiService
             page,
             timestamp = DateTime.UtcNow.ToString("o")
         });
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
@@ -63,7 +59,6 @@ public class PythonApiService
     public async Task<JsonElement> GetTrackedUsersAsync()
     {
         var response = await _http.GetAsync("/api/tracked-users");
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
@@ -71,7 +66,6 @@ public class PythonApiService
     public async Task<JsonElement> DeleteTrackedUserAsync(int index)
     {
         var response = await _http.DeleteAsync($"/api/tracked-users/{index}");
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
@@ -79,7 +73,6 @@ public class PythonApiService
     public async Task<JsonElement> ClearTrackedUsersAsync()
     {
         var response = await _http.DeleteAsync("/api/tracked-users/clear");
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
@@ -91,7 +84,6 @@ public class PythonApiService
         if (eventType != null) query += $"&event_type={eventType}";
 
         var response = await _http.GetAsync(query);
-        response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 }
