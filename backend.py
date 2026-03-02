@@ -851,6 +851,8 @@ def get_audit_logs():
 # =============================================================================
 
 if __name__ == '__main__':
+    from waitress import serve
+
     print("Starting Discharge Summary Backend...")
     print(f"Audit logs directory: {AUDIT_LOG_DIR}")
     print("Loading data and initializing vector database...")
@@ -875,9 +877,4 @@ if __name__ == '__main__':
     }))
 
     print("Backend ready at http://localhost:5002")
-    print("API endpoints:")
-    print("  GET  /api/discharge/patients")
-    print("  POST /api/discharge/generate")
-    print("  POST /api/discharge/simplify")
-    print("  GET  /api/audit/logs")
-    app.run(debug=True, port=5002)
+    serve(app, host='127.0.0.1', port=5002, threads=4)

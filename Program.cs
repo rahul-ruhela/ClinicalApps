@@ -3,6 +3,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// HTTP client for Python backend (URL from appsettings PythonApi:BaseUrl)
+var pythonApiUrl = builder.Configuration["PythonApi:BaseUrl"] ?? "http://localhost:5002";
+builder.Services.AddHttpClient("PythonApi", client =>
+{
+    client.BaseAddress = new Uri(pythonApiUrl);
+    client.Timeout = TimeSpan.FromSeconds(120); // AI calls can be slow
+});
+builder.Services.AddScoped<PythonApiService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

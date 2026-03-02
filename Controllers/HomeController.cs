@@ -7,30 +7,68 @@ namespace ClinicalApps.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly PythonApiService _python;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, PythonApiService python)
         {
             _logger = logger;
+            _python = python;
         }
 
-        public IActionResult Index()
+        public IActionResult Index() => View();
+        public IActionResult Privacy() => View();
+        public IActionResult Demo() => View();
+        public IActionResult UserTracking() => View();
+
+        // ── Discharge API ──────────────────────────────────────────────────
+
+        [HttpGet("/api/discharge/patients")]
+        public async Task<IActionResult> GetPatients()
         {
-            return View();
+            var result = await _python.GetPatientsAsync();
+            return Json(result);
         }
 
-        public IActionResult Privacy()
+        [HttpPost("/api/discharge/generate")]
+        public async Task<IActionResult> GenerateDischarge([FromBody] GenerateRequest req)
         {
-            return View();
-        }
-        public IActionResult Demo()
-        {
-            return View();
+            var result = await _python.GenerateDischargeAsync(req.PatientName, req.Language ?? "en");
+            return Json(result);
         }
 
-        public IActionResult UserTracking()
+        [HttpPost("/api/discharge/simplify")]
+        public async Task<IActionResult> SimplifyDischarge([FromBody] SimplifyRequest req)
         {
-            return View();
+            var result = await _python.SimplifyDischargeAsync(req.Summary, req.TargetGrade);
+            return Json(result);
         }
+
+        // ── User Tracking ──────────────────────────────────────────────────
+
+        [HttpPost("/api/track-user")]
+        public async Task<IActionResult> TrackUser([FromBody] TrackUserRequest req)
+        {
+            var result = await _python.TrackUserAsync(req.Name, req.Email, req.Page);
+            return Json(result);
+        }
+
+        [HttpGet("/api/tracked-users")]
+        public async Task<IActionResult> GetTrackedUsers()
+        {
+            var result = await _python.GetTrackedUsersAsync();
+            return Json(result);
+        }
+
+        // ── Audit Logs ─────────────────────────────────────────────────────
+
+        [HttpGet("/api/audit/logs")]
+        public async Task<IActionResult> GetAuditLogs(string? date, string? event_type, int limit = 100)
+        {
+            var result = await _python.GetAuditLogsAsync(date, event_type, limit);
+            return Json(result);
+        }
+
+        // ──────────────────────────────────────────────────────────────────
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -38,4 +76,9 @@ namespace ClinicalApps.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+
+    // Request models
+    public record GenerateRequest(string PatientName, string? Language);
+    public record SimplifyRequest(string Summary, int TargetGrade = 7);
+    public record TrackUserRequest(string Name, string Email, string Page);
 }
