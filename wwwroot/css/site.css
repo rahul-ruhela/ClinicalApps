@@ -3517,3 +3517,152 @@ tbody tr:last-child td {
 
 
 
+
+/* ── Upload / Type tab styles ─────────────────────────────────────────── */
+
+.input-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--gray-100);
+    margin-bottom: 16px;
+}
+
+.input-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 8px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    color: var(--gray-400);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.input-tab svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.input-tab:hover {
+    color: var(--primary);
+}
+
+.input-tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.upload-name-row {
+    margin-bottom: 12px;
+}
+
+.upload-name-row label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    margin-bottom: 4px;
+}
+
+.upload-name-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.upload-name-input:focus {
+    border-color: var(--primary);
+}
+
+.file-drop-zone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    margin-bottom: 8px;
+}
+
+.file-drop-zone:hover {
+    border-color: var(--primary);
+    background: #f0f9ff;
+}
+
+.file-drop-zone svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--gray-400);
+    margin-bottom: 6px;
+}
+
+.file-drop-zone p {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin: 0;
+}
+
+.file-drop-zone .file-hint {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    margin-top: 2px;
+}
+
+.file-name-display {
+    font-size: 0.8rem;
+    color: var(--primary);
+    padding: 4px 0 8px;
+}
+
+.upload-or {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.upload-or::before,
+.upload-or::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+}
+
+.upload-or span {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    white-space: nowrap;
+}
+
+.medical-textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    color: var(--dark);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+}
+
+.medical-textarea:focus {
+    border-color: var(--primary);
+}

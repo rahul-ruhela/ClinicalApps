@@ -605,6 +605,154 @@ End with: PREPARED BY: Clinical Document Assistant (AI-Generated) | DATE: {datet
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/api/discharge/generate-from-upload', methods=['POST'])
+@retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(3))
+def generate_from_upload():
+    global discharge_vectordb
+    t0 = time.perf_counter()
+
+    try:
+        data = request.json
+        medical_text = (data.get('medical_text') or '').strip()
+        patient_name = (data.get('patient_name') or 'Patient').strip() or 'Patient'
+        language = data.get('language', 'en')
+
+        if not medical_text:
+            write_audit_log(event_type='PHI_GENERATE', action='Generate from upload',
+                            status='FAILURE', error='No medical text provided',
+                            duration_ms=(time.perf_counter() - t0) * 1000)
+            return jsonify({'error': 'No medical text provided'}), 400
+
+        if not openai_client:
+            return jsonify({'error': 'OpenAI API key not configured'}), 500
+
+        if discharge_vectordb is None:
+            initialize_discharge_vectordb()
+
+        # Detect conditions from provided text
+        conditions = []
+        condition_keywords = {
+            "diabetes": ["diabetes", "diabetic", "dm", "type 2 diabetes", "e11"],
+            "hypertension": ["hypertension", "htn", "high blood pressure", "i10"],
+            "heart failure": ["heart failure", "hf", "chf", "congestive heart failure", "i50"],
+            "copd": ["copd", "chronic obstructive pulmonary", "emphysema", "j44"],
+            "atrial fibrillation": ["atrial fibrillation", "afib", "a-fib", "af", "i48"],
+            "chronic kidney disease": ["chronic kidney disease", "ckd", "renal failure", "n18"],
+            "stroke": ["stroke", "cva", "cerebrovascular", "ischemic stroke", "i63"],
+            "depression": ["depression", "depressive", "mdd", "f33", "f32"],
+            "coronary artery disease": ["coronary artery disease", "cad", "coronary disease"],
+            "osteoporosis": ["osteoporosis", "osteopenia", "m81", "bone loss"]
+        }
+        text_lower = medical_text.lower()
+        for condition_name, keywords in condition_keywords.items():
+            for keyword in keywords:
+                if keyword in text_lower and condition_name not in conditions:
+                    conditions.append(condition_name)
+                    break
+
+        # Retrieve matching clinical guidelines via RAG
+        guideline_chunks = []
+        seen_guidelines = set()
+        if discharge_vectordb:
+            for condition in conditions:
+                results = discharge_vectordb.similarity_search(
+                    f"{condition} clinical guideline treatment", k=5)
+                for doc in results:
+                    if doc.metadata.get('source') == 'clinical_guidelines' \
+                            and doc.page_content not in seen_guidelines:
+                        guideline_chunks.append(doc)
+                        seen_guidelines.add(doc.page_content)
+
+        guideline_context = "\n\n".join([doc.page_content for doc in guideline_chunks[:10]])
+
+        language_name = LANGUAGE_NAMES.get(language, 'English')
+        language_instruction = ""
+        if language != 'en':
+            language_instruction = f"\n\nIMPORTANT: Generate the entire discharge summary in {language_name}. All section headers and content must be written in {language_name}."
+
+        prompt = f"""You are a Clinical Documentation Specialist. Generate a comprehensive Discharge Summary with Follow-Up Plan based on the provided medical information.{language_instruction}
+
+PATIENT NAME: {patient_name}
+
+MEDICAL INFORMATION PROVIDED:
+{medical_text}
+
+RELEVANT CLINICAL GUIDELINES:
+{guideline_context if guideline_context else 'No specific guidelines matched.'}
+
+Generate a detailed Discharge Summary with:
+1. PATIENT INFORMATION (Name, and any identifiers from the provided text)
+2. ADMISSION DIAGNOSIS (with ICD-10 codes if identifiable)
+3. HOSPITAL COURSE (clinical summary based on provided information)
+4. DISCHARGE CONDITION
+5. DISCHARGE MEDICATIONS (with doses and instructions if available)
+6. DISCHARGE INSTRUCTIONS (activity, diet, warning signs)
+7. FOLLOW-UP APPOINTMENTS (Primary Care, Specialists, Labs - with timing based on guidelines)
+8. FOLLOW-UP CARE PLAN (Guideline-Based) - For each identified condition:
+   - Monitoring Parameters
+   - Target Goals
+   - Follow-up Timeline
+   - Red Flags to Watch
+9. PATIENT EDUCATION PROVIDED
+
+Format with clear section headers. If information is not available, indicate "Not documented."
+End with: PREPARED BY: Clinical Document Assistant (AI-Generated) | DATE: {datetime.now().strftime('%Y-%m-%d')}"""
+
+        response = openai_client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3
+        )
+        discharge_summary = response.choices[0].message.content
+        readability = calculate_flesch_kincaid(discharge_summary)
+
+        guideline_chunks_details = [
+            {
+                'type': chunk.metadata.get('type', 'unknown'),
+                'guideline_name': chunk.metadata.get('guideline_name', 'unknown'),
+                'content': chunk.page_content[:500] + '...' if len(chunk.page_content) > 500 else chunk.page_content,
+                'source': chunk.metadata.get('source', 'unknown')
+            }
+            for chunk in guideline_chunks[:10]
+        ]
+
+        write_audit_log(
+            event_type='PHI_GENERATE',
+            action='Discharge summary generated from uploaded/typed text',
+            status='SUCCESS',
+            patient_name=patient_name,
+            duration_ms=(time.perf_counter() - t0) * 1000,
+            extra={
+                'language': language,
+                'conditions_identified': conditions,
+                'guideline_chunks_used': len(guideline_chunks),
+                'text_length': len(medical_text),
+                'ai_model': 'gpt-4o-mini'
+            }
+        )
+
+        return jsonify({
+            'patient_name': patient_name,
+            'discharge_summary': discharge_summary,
+            'conditions_identified': conditions,
+            'patient_records_used': 0,
+            'guidelines_used': len(guideline_chunks),
+            'patient_chunks': [],
+            'guideline_chunks': guideline_chunks_details,
+            'readability': readability,
+            'language': language,
+            'language_name': language_name,
+            'generated_at': datetime.now().isoformat(),
+            'source': 'upload'
+        })
+
+    except Exception as e:
+        write_audit_log(event_type='PHI_GENERATE', action='Generate from upload',
+                        status='ERROR', error=str(e),
+                        duration_ms=(time.perf_counter() - t0) * 1000)
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/api/discharge/simplify', methods=['POST'])
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(3))
 def simplify_discharge():

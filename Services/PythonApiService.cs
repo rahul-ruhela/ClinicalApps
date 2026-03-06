@@ -31,6 +31,18 @@ public class PythonApiService
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
 
+    // POST /api/discharge/generate-from-upload
+    public async Task<JsonElement> GenerateFromUploadAsync(string medicalText, string patientName = "Patient", string language = "en")
+    {
+        var response = await _http.PostAsJsonAsync("/api/discharge/generate-from-upload", new
+        {
+            medical_text = medicalText,
+            patient_name = patientName,
+            language
+        });
+        return await response.Content.ReadFromJsonAsync<JsonElement>();
+    }
+
     // POST /api/discharge/simplify
     public async Task<JsonElement> SimplifyDischargeAsync(string summary, int targetGrade = 7)
     {

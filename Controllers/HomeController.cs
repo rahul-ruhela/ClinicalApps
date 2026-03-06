@@ -53,6 +53,24 @@ namespace ClinicalApps.Controllers
             }
         }
 
+        [HttpPost("/api/discharge/generate-from-upload")]
+        public async Task<IActionResult> GenerateFromUpload([FromBody] GenerateFromUploadRequest req)
+        {
+            try
+            {
+                var result = await _python.GenerateFromUploadAsync(
+                    req.MedicalText,
+                    req.PatientName ?? "Patient",
+                    req.Language ?? "en");
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GenerateFromUpload failed");
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
         [HttpPost("/api/discharge/simplify")]
         public async Task<IActionResult> SimplifyDischarge([FromBody] SimplifyRequest req)
         {
@@ -164,6 +182,11 @@ namespace ClinicalApps.Controllers
     public record SimplifyRequest(
         string Summary,
         [property: JsonPropertyName("target_grade")] int TargetGrade = 7);
+
+    public record GenerateFromUploadRequest(
+        [property: JsonPropertyName("medical_text")] string MedicalText,
+        [property: JsonPropertyName("patient_name")] string? PatientName,
+        string? Language);
 
     public record TrackUserRequest(string Name, string Email, string Page);
 }

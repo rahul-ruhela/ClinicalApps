@@ -1,6 +1,99 @@
 ﻿let selectedPatient = null;
 let currentSummary = null;
 
+// ── Tab switching ──────────────────────────────────────────────────────────
+
+function switchTab(tab) {
+    const isPatients = tab === 'patients';
+    document.getElementById('patientTabContent').style.display = isPatients ? 'block' : 'none';
+    document.getElementById('uploadTabContent').style.display = isPatients ? 'none' : 'block';
+    document.getElementById('tab-patients').classList.toggle('active', isPatients);
+    document.getElementById('tab-upload').classList.toggle('active', !isPatients);
+}
+
+// ── File upload handler ────────────────────────────────────────────────────
+
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const display = document.getElementById('fileNameDisplay');
+    display.textContent = '📄 ' + file.name;
+    display.style.display = 'block';
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        document.getElementById('medicalTextInput').value = e.target.result;
+    };
+    reader.readAsText(file);
+}
+
+// ── Generate from upload / typed text ─────────────────────────────────────
+
+async function generateFromUpload() {
+    const medicalText = document.getElementById('medicalTextInput').value.trim();
+    if (!medicalText) {
+        alert('Please upload a file or type/paste medical details first.');
+        return;
+    }
+
+    const patientName = document.getElementById('uploadPatientName').value.trim() || 'Patient';
+    const language = document.getElementById('uploadLanguageSelect').value;
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const loadingText = document.querySelector('.loading-text');
+    loadingText.textContent = 'Generating Discharge Summary...';
+    loadingOverlay.classList.add('active');
+
+    try {
+        const response = await fetch('/api/discharge/generate-from-upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ medical_text: medicalText, patient_name: patientName, language })
+        });
+
+        const data = await response.json();
+        if (data.error) throw new Error(data.error);
+
+        currentSummary = data;
+
+        document.getElementById('recordsCount').textContent = 0;
+        document.getElementById('guidelinesCount').textContent = data.guidelines_used;
+
+        const conditionsBadges = data.conditions_identified.map(c =>
+            `<span class="stat-badge">${c}</span>`
+        ).join(' ');
+        document.getElementById('conditionsBadges').innerHTML =
+            conditionsBadges || '<span class="stat-badge">None identified</span>';
+
+        document.getElementById('statsBar').style.display = 'flex';
+        document.getElementById('summaryActions').style.display = 'flex';
+
+        const translationBadge = document.getElementById('translationBadge');
+        if (language !== 'en') {
+            document.getElementById('languageName').textContent = languageNames[language];
+            translationBadge.style.display = 'inline-flex';
+        } else {
+            translationBadge.style.display = 'none';
+        }
+
+        document.getElementById('summaryContent').innerHTML =
+            `<div class="summary-content">${data.discharge_summary}</div>`;
+
+        displayReadability(data.readability);
+        displayChunks(data);
+
+    } catch (error) {
+        console.error('Error generating summary:', error);
+        document.getElementById('summaryContent').innerHTML = `
+            <div class="summary-placeholder" style="color: var(--danger);">
+                <h3>Error Generating Summary</h3>
+                <p>${error.message}</p>
+            </div>`;
+    } finally {
+        loadingOverlay.classList.remove('active');
+    }
+}
+
 const languageNames = {
     'en': 'English',
     'zh': 'Chinese (Mandarin)',
